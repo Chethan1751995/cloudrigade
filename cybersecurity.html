@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Solutions - Cloudrigade Technologies</title>
-    <meta name="description" content="Advanced cybersecurity solutions with threat detection, vulnerability assessments, and compliance management for Indian businesses.">
+    <title>Cybersecurity Solutions & Managed Services - Cloudrigade Technologies</title>
+    <meta name="description" content="Fortify your business with Cloudrigade's 360-degree cybersecurity services. We provide 24/7 SOC, threat hunting, and compliance solutions for Indian enterprises.">
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* Main Page CSS, modified to remove all shadows */
         * {
             margin: 0;
             padding: 0;
@@ -22,14 +21,19 @@
         :root {
             --primary-blue: #1B2951;
             --secondary-blue: #2B3E75;
-            --accent-pink: #E91E63;
-            --accent-gradient: linear-gradient(135deg, #E91E63, #FF6B9D);
+            --accent-pink: #FF1493;
+            --bright-blue: #00BFFF;
+            --brand-gradient: linear-gradient(135deg, #FF1493, #00BFFF);
+            --accent-gradient: linear-gradient(135deg, #FF1493, #FF6B9D);
             --white: #FFFFFF;
             --light-gray: #F8F9FA;
             --text-gray: #6C757D;
             --border-gray: #E9ECEF;
             --success-green: #28a745;
-            --warning-red: #dc3545;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -37,182 +41,300 @@
             line-height: 1.6;
             color: var(--primary-blue);
             overflow-x: hidden;
+            font-weight: 400;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         /* Header Styles */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 2px 30px rgba(27, 41, 81, 0.15);
+            background: var(--white);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-gray);
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 1px;
+            text-decoration: none;
         }
 
-        .logo-icon {
-            width: 45px;
-            height: 45px;
+        .custom-logo {
+            height: 75px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            transition: all 0.3s ease;
         }
 
-        .logo-icon svg {
-            width: 100%;
-            height: 100%;
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
         }
 
         .logo-text {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--accent-gradient);
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: var(--brand-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
+            letter-spacing: 1px;
+            line-height: 1;
         }
 
         .logo-tagline {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-gray);
-            margin-top: -5px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 1px;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
             align-items: center;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-menu a {
             text-decoration: none;
             color: var(--primary-blue);
             font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
         }
 
         .nav-menu a:hover {
             color: var(--accent-pink);
         }
 
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 300px;
+            border-radius: 12px;
+            border: 1px solid var(--border-gray);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 1rem 0;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--light-gray);
+            color: var(--accent-pink);
+            border-left-color: var(--accent-pink);
+        }
+        
+        .dropdown-menu .coming-soon {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            opacity: 0.8;
+            position: relative;
+        }
+        .dropdown-menu .coming-soon:hover {
+            color: var(--accent-pink);
+            opacity: 1;
+            background: rgba(255, 20, 147, 0.05);
+        }
+        .dropdown-menu .coming-soon::after {
+            content: "SOON";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #ff6b35, #0066cc);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
         .cta-button {
-            background: var(--accent-gradient);
+            background: var(--brand-gradient);
             color: var(--white);
             padding: 12px 24px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(233, 30, 99, 0.3);
+            white-space: nowrap;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(233, 30, 99, 0.4);
+            color: var(--white);
         }
 
-        /* Service Hero Section */
-        .service-hero {
-            background: linear-gradient(135deg, 
-                rgba(27, 41, 81, 0.95) 0%, 
-                rgba(43, 62, 117, 0.95) 50%, 
-                rgba(233, 30, 99, 0.85) 100%),
-                url('https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        /* Generic Section Styles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .btn-primary {
+            background: var(--brand-gradient);
+            color: var(--white);
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            color: var(--white);
+        }
+        .plan-btn {
+            background: var(--brand-gradient);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: auto; 
+        }
+        .plan-btn:hover {
+            transform: translateY(-2px);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(27, 41, 81, 0.95) 0%, rgba(43, 62, 117, 0.95) 50%, rgba(255, 20, 147, 0.85) 100%), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             color: var(--white);
-            padding: 140px 0 100px;
+            padding: 160px 0 120px;
             position: relative;
+            overflow: hidden;
         }
-
-        .service-hero::before {
+        .hero::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
             opacity: 0.4;
         }
-
         .hero-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
             align-items: center;
             position: relative;
             z-index: 2;
         }
-
         .hero-text h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
         }
-
         .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
             opacity: 0.95;
         }
-
-        .btn-primary {
-            background: var(--accent-gradient);
-            color: var(--white);
-            padding: 16px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.5);
-        }
-
-        .security-stats {
+        .hero-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 2rem;
         }
-
         .stat-item {
             text-align: center;
             background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
         }
-
+        .stat-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
@@ -220,691 +342,485 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: 0.5rem;
         }
-
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 1rem;
             opacity: 0.9;
+            font-weight: 500;
         }
 
-        /* Threat Landscape Section */
-        .threat-landscape {
-            padding: 100px 0;
+        /* Overview Section */
+        .service-overview {
+            padding: 120px 0;
             background: var(--white);
         }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary-blue);
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .threat-grid {
+        .overview-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
+            align-items: center;
         }
-
-        .threat-card {
-            background: var(--light-gray);
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
-            border-left: 5px solid var(--warning-red);
-        }
-
-        .threat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        .threat-card i {
-            font-size: 3rem;
-            color: var(--warning-red);
-            margin-bottom: 1rem;
-        }
-
-        .threat-card h4 {
+        .overview-text h3 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--primary-blue);
         }
-
-        /* Security Solutions Section */
-        .security-solutions {
-            padding: 100px 0;
+        .overview-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+            font-size: 1.05rem;
+        }
+        .benefits-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
             background: var(--light-gray);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .benefits-list li:hover {
+            transform: translateX(8px);
+            background: rgba(255, 20, 147, 0.05);
+        }
+        .benefits-list i {
+            color: var(--success-green);
+            font-size: 1.2rem;
+            width: 20px;
+            margin-top: 4px; 
         }
 
-        .solutions-grid {
+        /* Core Services & Pricing Sections */
+        .core-services, .pricing {
+            padding: 120px 0;
+            background: var(--light-gray);
+        }
+        .services-grid, .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2.5rem;
-            margin-top: 3rem;
+            align-items: stretch;
         }
-
-        .solution-card {
+        .service-card, .pricing-card {
             background: var(--white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            padding: 3rem;
+            border-radius: 24px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            border: 1px solid var(--border-gray);
+            display: flex;
+            flex-direction: column;
         }
-
-        .solution-card::before {
+        .service-card:hover, .pricing-card:hover, .value-card:hover {
+            transform: translateY(-10px);
+        }
+        .service-card::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            position: absolute; top: 0; left: 0; right: 0;
             height: 5px;
-            background: var(--accent-gradient);
+            background: var(--brand-gradient);
         }
-
-        .solution-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .solution-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--accent-gradient);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .solution-icon i {
-            font-size: 1.8rem;
-            color: var(--white);
-        }
-
-        .solution-card h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary-blue);
-        }
-
-        .solution-card p {
-            color: var(--text-gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .solution-features {
-            list-style: none;
-        }
-
-        .solution-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-        }
-
-        .solution-features i {
-            color: var(--success-green);
-            font-size: 1rem;
-        }
-
-        /* Compliance Section */
-        .compliance-section {
-            padding: 100px 0;
-            background: var(--primary-blue);
-            color: var(--white);
-        }
-
-        .compliance-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .compliance-text h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-        }
-
-        .compliance-standards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .standard-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .standard-item i {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            background: var(--accent-gradient);
+        .service-card > i { 
+            font-size: 3.5rem;
+            background: var(--brand-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 2rem;
         }
-
-        .standard-item h4 {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Pricing Section */
-        .pricing-section {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .pricing-card {
-            background: var(--white);
-            border: 2px solid var(--border-gray);
-            border-radius: 25px;
-            padding: 2.5rem;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card.featured {
-            border-color: var(--accent-pink);
-            transform: scale(1.05);
-        }
-
-        .pricing-card.featured::before {
-            content: 'Most Popular';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent-gradient);
-            color: var(--white);
-            padding: 8px 25px;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .plan-name {
+        .service-card h3, .pricing-card .plan-name {
             font-family: 'Poppins', sans-serif;
             font-size: 1.6rem;
             font-weight: 600;
+            margin-bottom: 1.5rem;
             color: var(--primary-blue);
-            margin-bottom: 1rem;
         }
-
-        .plan-price {
-            font-size: 2.5rem;
+        .service-card p, .pricing-card .plan-description {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            flex-grow: 1; 
+        }
+        .service-link {
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            margin-top: auto;
+        }
+        .service-link:hover {
+            transform: translateX(8px);
+        }
+        
+        /* Threat Landscape (Using .value-grid) */
+        .threat-landscape {
+            padding: 120px 0;
+            background: var(--white);
+        }
+        .value-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+             gap: 2.5rem;
+        }
+        .value-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-gray);
+        }
+        .value-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 5px; background: var(--accent-gradient);
+        }
+        .value-card .threat-number {
+            font-size: 3.5rem;
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            display: block;
         }
-
-        .plan-period {
-            color: var(--text-gray);
-            margin-bottom: 2rem;
-        }
-
-        .plan-features {
-            list-style: none;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .plan-features li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--border-gray);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .plan-features li:last-child {
-            border-bottom: none;
-        }
-
-        .feature-check {
-            color: var(--success-green);
-            font-weight: 600;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 100px 0;
-            background: var(--light-gray);
-            text-align: center;
-        }
-
-        .cta-content h2 {
+        .value-card h3 {
             font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 1rem;
             color: var(--primary-blue);
         }
-
-        .cta-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+        .value-card p {
             color: var(--text-gray);
+            font-size: 1rem;
         }
 
-        /* Footer */
-        footer {
+        /* Pricing Section */
+        .pricing-card.popular {
+            border: 2px solid var(--accent-pink);
+            transform: scale(1.02);
+        }
+        .pricing-card.popular:hover { transform: scale(1.02) translateY(-10px); }
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute; top: -15px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--brand-gradient);
+            color: var(--white); padding: 8px 25px;
+            border-radius: 25px; font-size: 0.85rem; font-weight: 600;
+        }
+        .plan-icon {
+            width: 70px; height: 70px; background: var(--brand-gradient);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; margin: 0 auto 2rem;
+        }
+        .plan-icon i { font-size: 1.8rem; color: var(--white); }
+        .plan-description { min-height: 40px; }
+        .plan-price { font-size: 2.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 2rem; }
+        .plan-features { list-style: none; margin-bottom: 2.5rem; text-align: left; padding-left: 0; flex-grow: 1; }
+        .plan-features li { padding: 0.8rem 0; display: flex; align-items: flex-start; gap: 1rem; border-bottom: 1px solid var(--border-gray); }
+        .plan-features li:last-child { border-bottom: none; }
+        .plan-features i { color: var(--success-green); width: 16px; margin-top: 5px; }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
             background: var(--primary-blue);
             color: var(--white);
-            padding: 4rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section ul li a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section ul li a:hover {
-            color: var(--accent-pink);
-        }
-
-        .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.8;
         }
+        .cta-content h2 { color: var(--white); }
+        .cta-content p { opacity: 0.9; max-width: 700px; margin: 0 auto 2.5rem; }
 
-        /* Responsive Design */
+        /* Footer */
+        footer { background-color: #111; color: #eee; padding: 60px 0 40px; }
+        footer a { color: #eee; text-decoration: none; transition: color 0.3s ease; }
+        footer a:hover { color: #FF1493; }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 3rem; margin-bottom: 3rem; align-items: flex-start; }
+        .footer-section h3 { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 1.5rem; color: #FFFFFF; font-size: 1.4rem; }
+        .footer-section ul { list-style: none; padding: 0; margin: 0; }
+        .footer-section ul li { margin-bottom: 0.8rem; }
+        .footer-section ul li a { color: rgba(255, 255, 255, 0.8); }
+        .footer-section p { color: rgba(255, 255, 255, 0.9); }
+        .address-box { background: rgba(255, 255, 255, 0.1); padding: 20px 25px; border-radius: 16px; margin: 20px 0; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .india-flag { width: 24px; margin-right: 10px; }
+        .address-header { font-weight: 600; display: flex; align-items: center; color: #FF1493; }
+        .social-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .social-links a { width: 45px; height: 45px; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .social-links a:hover { background: linear-gradient(135deg, #FF1493, #0A1628); border-color: #FF1493; transform: translateY(-3px); }
+        .social-links i { font-size: 1.2rem; }
+        .footer-bottom { text-align: center; padding-top: 2.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); opacity: 0.8; }
+        
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        
         @media (max-width: 768px) {
-            .hero-content,
-            .compliance-content {
-                grid-template-columns: 1fr;
-                text-align: center;
+            .mobile-menu-toggle { display: block; }
+            .nav-menu {
+                position: fixed; top: 91px; left: 0; width: 100%; background: var(--white); flex-direction: column;
+                padding: 2rem 0; transform: translateY(-150%); opacity: 0; visibility: hidden;
+                transition: all 0.3s ease; border-top: 1px solid var(--border-gray);
             }
-
-            .hero-text h1 {
-                font-size: 2.2rem;
+            .nav-menu.active { transform: translateY(0); opacity: 1; visibility: visible; }
+            .nav-menu li { width: 100%; text-align: center; }
+            .dropdown-menu {
+                position: static; opacity: 1; visibility: visible; transform: none;
+                border: none; background: var(--light-gray); margin-top: 0.5rem; display: none;
             }
-
-            .security-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .compliance-standards {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-card.featured {
-                transform: none;
-            }
-
-            .section-header h2 {
-                font-size: 2.2rem;
-            }
+            .nav-item.mobile-dropdown-active .dropdown-menu { display: block; }
+            .hero-content, .overview-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-stats, .value-grid, .services-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .pricing-card.popular { transform: none; }
+            .section-header h2, .hero-text h1 { font-size: 2.2rem; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .social-links { justify-content: center; }
         }
+
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <nav class="nav-container">
-                <div class="logo-container">
-                    <div class="logo-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#E91E63;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#FF6B9D;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <path d="M75 35c8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15H25c-8.284 0-15-6.716-15-15s6.716-15 15-15c0-11.046 8.954-20 20-20s20 8.954 20 20c5.523 0 10 4.477 10 10z" fill="url(#cloudGradient)" opacity="0.9"/>
-                            <path d="M45 25c-8.284 0-15 6.716-15 15 0 2.5.5 4.9 1.4 7.1C33.6 45.6 35.7 44 38.2 44h31.6c6.6 0 12-5.4 12-12s-5.4-12-12-12c-1.3 0-2.5.2-3.7.6C63.2 15.2 56.8 10 49 10c-7.8 0-14.2 5.2-17.1 12.4C30.6 23.2 29.4 24 28 24c-3.3 0-6 2.7-6 6s2.7 6 6 6h11c2.8-7.2 9.8-12 18-12z" fill="rgba(255,255,255,0.3)"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <a href="index.html" class="logo-text">CLOUDRIGADE</a>
+                <a href="index.html" class="logo-container">
+                    <img src="logo.png" alt="Cloudrigade Technologies Logo" class="custom-logo">
+                    <div class="logo-text-container">
+                        <div class="logo-text">CLOUDRIGADE</div>
                         <div class="logo-tagline">WHERE CLOUD MEETS CONFIDENCE</div>
                     </div>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li class="nav-item">
+                        <a href="index.html#services">Services <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="cloud-migration.html">Cloud Migration & Management</a>
+                            <a href="cybersecurity.html">Cybersecurity Solutions</a>
+                            <a href="devops.html">DevOps & Automation</a>
+                            <a href="digital-transformation.html">Digital Transformation</a>
+                            <a href="data-ai.html">Data Analytics & AI</a>
+                            <a href="index.html#services">24/7 IT Support</a>
+                        </div>
+                    </li>
                     <li><a href="index.html#pricing">Pricing</a></li>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                     <li><a href="index.html#contact" class="cta-button">Get Free Assessment</a></li>
                 </ul>
+                <button class="mobile-menu-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Service Hero Section -->
-    <section class="service-hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Advanced Cybersecurity Solutions</h1>
-                    <p>Protect your business with enterprise-grade security solutions including threat detection, vulnerability assessments, and compliance management tailored for Indian regulations.</p>
-                    <a href="#contact" class="btn-primary">Get Security Assessment</a>
-                </div>
-                <div class="security-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">99.9%</div>
-                        <div class="stat-label">Threat Detection Rate</div>
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Cyber Resilience for the Modern Enterprise</h1>
+                        <p>We provide proactive, intelligence-driven cybersecurity services to protect your digital assets, ensure compliance, and empower confident growth in an era of evolving threats.</p>
+                        <a href="#cta" class="btn-primary">Request a Security Assessment</a>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Security Monitoring</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Compliance Success</div>
+                    <div class="hero-stats">
+                        <div class="stat-item fade-in">
+                            <div class="stat-number">99.9%</div>
+                            <div class="stat-label">Threat Detection</div>
+                        </div>
+                        <div class="stat-item fade-in">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Threat Hunting</div>
+                        </div>
+                        <div class="stat-item fade-in">
+                            <div class="stat-number">Rapid</div>
+                            <div class="stat-label">Incident Response</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Threat Landscape Section -->
-    <section class="threat-landscape">
-        <div class="container">
-            <div class="section-header">
-                <h2>Today's Cybersecurity Threats</h2>
-                <p>Understanding the evolving threat landscape is crucial for protecting your business in 2025</p>
-            </div>
-            <div class="threat-grid">
-                <div class="threat-card">
-                    <i class="fas fa-virus"></i>
-                    <h4>Ransomware Attacks</h4>
-                    <p>Sophisticated ransomware attacks targeting Indian businesses increased by 78% in 2024, making robust backup and recovery essential.</p>
+        <section class="service-overview" id="overview">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Your 360-Degree Security Partner</h2>
+                    <p>In today's digital landscape, a reactive security posture is a liability. We deliver a holistic security framework that protects your entire technology ecosystem—from cloud and network to endpoints and users.</p>
                 </div>
-                <div class="threat-card">
-                    <i class="fas fa-user-secret"></i>
-                    <h4>Insider Threats</h4>
-                    <p>Internal security breaches account for 34% of data incidents, requiring comprehensive employee monitoring and access controls.</p>
-                </div>
-                <div class="threat-card">
-                    <i class="fas fa-envelope"></i>
-                    <h4>Phishing & Social Engineering</h4>
-                    <p>Email-based attacks remain the #1 attack vector, with 91% of cyberattacks beginning with a phishing email.</p>
-                </div>
-                <div class="threat-card">
-                    <i class="fas fa-cloud"></i>
-                    <h4>Cloud Security Risks</h4>
-                    <p>Misconfigured cloud services lead to data exposures, with 68% of organizations experiencing cloud security incidents.</p>
+                <div class="overview-content">
+                    <div class="overview-text fade-in">
+                        <h3>From Defense to Dominance</h3>
+                        <p>We believe true cybersecurity isn't just about preventing attacks; it's about building a resilient organization that can thrive in a hostile environment. Our services are designed to mature your security posture from a simple defense mechanism into a strategic business enabler.</p>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check-circle"></i><div><strong>24/7 Security Operations Center (SOC):</strong> Our India-based SOC provides round-the-clock monitoring, rapid incident response, and forensic analysis.</div></li>
+                            <li><i class="fas fa-check-circle"></i><div><strong>Master Regulatory Compliance:</strong> Effortlessly meet DPDP Act, CERT-In directives, and global standards like ISO 27001 and GDPR.</div></li>
+                            <li><i class="fas fa-check-circle"></i><div><strong>Strengthen Your Human Firewall:</strong> Reduce human error with engaging security awareness training and advanced phishing simulations.</div></li>
+                        </ul>
+                    </div>
+                    <div class="overview-text fade-in">
+                        <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80" alt="Cybersecurity analyst monitoring network traffic in a Security Operations Center" style="width: 100%; border-radius: 24px;">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Security Solutions Section -->
-    <section class="security-solutions">
-        <div class="container">
-            <div class="section-header">
-                <h2>Comprehensive Security Solutions</h2>
-                <p>Multi-layered defense strategies to protect your business from every angle</p>
-            </div>
-            <div class="solutions-grid">
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Network Security</h3>
-                    <p>Advanced firewall management, intrusion detection, and network monitoring to secure your perimeter.</p>
-                    <ul class="solution-features">
-                        <li><i class="fas fa-check"></i> Next-Generation Firewalls</li>
-                        <li><i class="fas fa-check"></i> Intrusion Detection & Prevention</li>
-                        <li><i class="fas fa-check"></i> Network Segmentation</li>
-                        <li><i class="fas fa-check"></i> VPN & Remote Access Security</li>
-                    </ul>
+        <section class="core-services" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Core Service Offerings</h2>
+                    <p>A comprehensive suite of security services to protect every layer of your organization.</p>
                 </div>
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-eye"></i>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <i class="fas fa-binoculars"></i>
+                        <h3>Managed Detection & Response (MDR)</h3>
+                        <p>Our 24/7 SOC acts as your dedicated security team, using advanced tools and expert threat hunters to detect and neutralize threats before they can impact your business operations.</p>
+                        <a href="index.html#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <h3>Threat Detection & Response</h3>
-                    <p>24/7 security monitoring with AI-powered threat detection and rapid incident response capabilities.</p>
-                    <ul class="solution-features">
-                        <li><i class="fas fa-check"></i> Security Information & Event Management (SIEM)</li>
-                        <li><i class="fas fa-check"></i> Behavioral Analytics</li>
-                        <li><i class="fas fa-check"></i> Automated Threat Response</li>
-                        <li><i class="fas fa-check"></i> Forensics & Investigation</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-lock"></i>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-user-secret"></i>
+                        <h3>Vulnerability Management & Pen Testing</h3>
+                        <p>Proactively identify and remediate weaknesses in your infrastructure, applications, and cloud environments with continuous scanning and expert-led penetration testing.</p>
+                        <a href="index.html#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <h3>Data Protection</h3>
-                    <p>End-to-end encryption, data loss prevention, and backup solutions to safeguard critical information.</p>
-                    <ul class="solution-features">
-                        <li><i class="fas fa-check"></i> Data Encryption at Rest & Transit</li>
-                        <li><i class="fas fa-check"></i> Data Loss Prevention (DLP)</li>
-                        <li><i class="fas fa-check"></i> Automated Backup & Recovery</li>
-                        <li><i class="fas fa-check"></i> Data Classification & Governance</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-user-shield"></i>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Security (CSPM & CWPP)</h3>
+                        <p>Secure your AWS, Azure, and GCP environments with Cloud Security Posture Management and Cloud Workload Protection, ensuring compliance and protection.</p>
+                        <a href="index.html#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <h3>Identity & Access Management</h3>
-                    <p>Comprehensive user authentication, authorization, and access control to prevent unauthorized access.</p>
-                    <ul class="solution-features">
-                        <li><i class="fas fa-check"></i> Multi-Factor Authentication (MFA)</li>
-                        <li><i class="fas fa-check"></i> Single Sign-On (SSO)</li>
-                        <li><i class="fas fa-check"></i> Privileged Access Management</li>
-                        <li><i class="fas fa-check"></i> Zero Trust Architecture</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-search"></i>
+                     <div class="service-card fade-in">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Compliance & Governance (vCISO)</h3>
+                        <p>Leverage our Virtual CISO service to develop a strategic security roadmap, manage risk, and ensure you meet all regulatory requirements, including the DPDP Act.</p>
+                         <a href="index.html#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <h3>Vulnerability Management</h3>
-                    <p>Regular security assessments, penetration testing, and vulnerability remediation to stay ahead of threats.</p>
-                    <ul class="solution-features">
-                        <li><i class="fas fa-check"></i> Automated Vulnerability Scanning</li>
-                        <li><i class="fas fa-check"></i> Penetration Testing</li>
-                        <li><i class="fas fa-check"></i> Security Code Review</li>
-                        <li><i class="fas fa-check"></i> Compliance Auditing</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Security Awareness Training</h3>
-                    <p>Employee education and training programs to build a human firewall against social engineering attacks.</p>
-                    <ul class="solution-features">
-                        <li><i class="fas fa-check"></i> Phishing Simulation</li>
-                        <li><i class="fas fa-check"></i> Security Awareness Workshops</li>
-                        <li><i class="fas fa-check"></i> Policy Development</li>
-                        <li><i class="fas fa-check"></i> Incident Response Training</li>
-                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
+        <section class="threat-landscape">
+            <div class="container">
+                 <div class="section-header">
+                    <h2>The 2025 India Threat Landscape</h2>
+                    <p>Cybersecurity is no longer an option—it's essential for survival. The threats facing Indian businesses are real and growing.</p>
+                </div>
+                <div class="value-grid">
+                    <div class="value-card fade-in">
+                        <span class="threat-number">74%</span>
+                        <h3>of Indian Organizations</h3>
+                        <p>were hit by ransomware in the last 12 months. (Source: Sophos)</p>
+                    </div>
+                    <div class="value-card fade-in">
+                        <span class="threat-number">₹17.9 Cr</span>
+                        <h3>Average Cost</h3>
+                        <p>of a data breach for an Indian company. (Source: IBM)</p>
+                    </div>
+                    <div class="value-card fade-in">
+                        <span class="threat-number">204</span>
+                        <h3>Days Average</h3>
+                        <p>to identify and contain a data breach. (Source: IBM)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Compliance Section -->
-    <section class="compliance-section">
-        <div class="container">
-            <div class="compliance-content">
-                <div class="compliance-text">
-                    <h2>Regulatory Compliance & Standards</h2>
-                    <p>Ensure your business meets all Indian and international cybersecurity regulations with our comprehensive compliance management services.</p>
-                    <p>Our experts help you navigate complex regulatory requirements including GDPR, ISO 27001, SOC 2, and Indian data protection laws while maintaining operational efficiency.</p>
+        <section class="pricing" id="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Cybersecurity Protection Packages</h2>
+                    <p>Scalable, transparent security solutions designed to protect your business at every stage of its growth.</p>
                 </div>
-                <div class="compliance-standards">
-                    <div class="standard-item">
-                        <i class="fas fa-certificate"></i>
-                        <h4>ISO 27001</h4>
-                        <p>Information Security Management</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card fade-in">
+                        <div class="plan-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="plan-name">Security Essentials</div>
+                        <div class="plan-description">Foundational protection for small & medium businesses.</div>
+                        <div class="plan-price">Custom Quote</div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Managed Endpoint Protection (EDR)</li>
+                            <li><i class="fas fa-check"></i> Next-Generation Firewall Management</li>
+                            <li><i class="fas fa-check"></i> Security Awareness Training</li>
+                            <li><i class="fas fa-check"></i> Monthly Vulnerability Scanning</li>
+                            <li><i class="fas fa-check"></i> Annual Security Audit Report</li>
+                        </ul>
+                        <a href="index.html#contact" class="plan-btn">Request Quote</a>
                     </div>
-                    <div class="standard-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>SOC 2</h4>
-                        <p>Security & Availability</p>
+                    <div class="pricing-card popular fade-in">
+                        <div class="plan-icon"><i class="fas fa-star"></i></div>
+                        <div class="plan-name">Managed Defense</div>
+                        <div class="plan-description">Proactive 24/7 protection for growing companies.</div>
+                        <div class="plan-price">Custom Quote</div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> <strong>All Security Essentials, plus:</strong></li>
+                            <li><i class="fas fa-check"></i> 24/7/365 SOC Monitoring (MDR)</li>
+                            <li><i class="fas fa-check"></i> Proactive Threat Hunting</li>
+                            <li><i class="fas fa-check"></i> Log Management & Analysis (SIEM)</li>
+                            <li><i class="fas fa-check"></i> Cloud Security Posture Management</li>
+                            <li><i class="fas fa-check"></i> Quarterly Security & Compliance Audits</li>
+                        </ul>
+                        <a href="index.html#contact" class="plan-btn">Request Quote</a>
                     </div>
-                    <div class="standard-item">
-                        <i class="fas fa-globe"></i>
-                        <h4>GDPR</h4>
-                        <p>Data Protection Regulation</p>
-                    </div>
-                    <div class="standard-item">
-                        <i class="fas fa-flag"></i>
-                        <h4>Indian PDPB</h4>
-                        <p>Personal Data Protection Bill</p>
+                    <div class="pricing-card fade-in">
+                        <div class="plan-icon"><i class="fas fa-crown"></i></div>
+                        <div class="plan-name">Strategic Resilience</div>
+                        <div class="plan-description">A comprehensive security program for enterprises.</div>
+                        <div class="plan-price">Custom Quote</div>
+                        <ul class="plan-features">
+                             <li><i class="fas fa-check"></i> <strong>All Managed Defense, plus:</strong></li>
+                            <li><i class="fas fa-check"></i> Virtual CISO (vCISO) Service</li>
+                            <li><i class="fas fa-check"></i> Penetration Testing & Red Teaming</li>
+                            <li><i class="fas fa-check"></i> Incident Response Retainer & SLA</li>
+                            <li><i class="fas fa-check"></i> Continuous Audit & Attestation Support</li>
+                        </ul>
+                        <a href="index.html#contact" class="plan-btn">Request Quote</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Cybersecurity Packages</h2>
-                <p>Choose the security package that best protects your business assets and data</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="plan-name">Essential Security</div>
-                    <div class="plan-price">₹35,000</div>
-                    <div class="plan-period">per month</div>
-                    <ul class="plan-features">
-                        <li>Basic Firewall Management <span class="feature-check">✓</span></li>
-                        <li>Antivirus & Anti-malware <span class="feature-check">✓</span></li>
-                        <li>Email Security <span class="feature-check">✓</span></li>
-                        <li>Monthly Vulnerability Scans <span class="feature-check">✓</span></li>
-                        <li>Security Awareness Training <span class="feature-check">✓</span></li>
-                        <li>Up to 25 Users <span class="feature-check">✓</span></li>
-                    </ul>
-                    <a href="index.html#contact" class="btn-primary">Get Started</a>
-                </div>
-                <div class="pricing-card featured">
-                    <div class="plan-name">Advanced Protection</div>
-                    <div class="plan-price">₹85,000</div>
-                    <div class="plan-period">per month</div>
-                    <ul class="plan-features">
-                        <li>24/7 SOC Monitoring <span class="feature-check">✓</span></li>
-                        <li>Advanced Threat Detection <span class="feature-check">✓</span></li>
-                        <li>Incident Response Services <span class="feature-check">✓</span></li>
-                        <li>Weekly Vulnerability Scans <span class="feature-check">✓</span></li>
-                        <li>Compliance Management <span class="feature-check">✓</span></li>
-                        <li>Data Loss Prevention <span class="feature-check">✓</span></li>
-                        <li>Up to 100 Users <span class="feature-check">✓</span></li>
-                    </ul>
-                    <a href="index.html#contact" class="btn-primary">Get Started</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="plan-name">Enterprise Shield</div>
-                    <div class="plan-price">₹2,50,000</div>
-                    <div class="plan-period">per month</div>
-                    <ul class="plan-features">
-                        <li>Complete Security Operations Center <span class="feature-check">✓</span></li>
-                        <li>AI-Powered Threat Hunting <span class="feature-check">✓</span></li>
-                        <li>Dedicated Security Team <span class="feature-check">✓</span></li>
-                        <li>Daily Vulnerability Assessments <span class="feature-check">✓</span></li>
-                        <li>Red Team Exercises <span class="feature-check">✓</span></li>
-                        <li>Zero Trust Implementation <span class="feature-check">✓</span></li>
-                        <li>Unlimited Users <span class="feature-check">✓</span></li>
-                    </ul>
-                    <a href="index.html#contact" class="btn-primary">Contact Sales</a>
+        <section class="cta-section" id="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Don't Be the Next Headline.</h2>
+                    <p>Request a complimentary, confidential security posture assessment. Our experts will identify critical vulnerabilities and provide an actionable roadmap to enhance your cyber resilience.</p>
+                    <a href="index.html#contact" class="btn-primary">Get Your Free Assessment</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Don't Wait for a Breach to Happen</h2>
-                <p>Get a comprehensive security assessment and protect your business from cyber threats today.</p>
-                <a href="index.html#contact" class="btn-primary">Get Free Security Assessment</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
+    <footer id="footer">
+       <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Cloudrigade Technologies</h3>
-                    <p>Empowering businesses across India with cutting-edge cloud solutions and digital transformation services.</p>
+                    <p>Empowering businesses across India with cutting-edge cloud solutions and digital transformation services. Where cloud meets confidence.</p>
+                    <div class="address-box">
+                        <div class="address-header"><img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" class="india-flag" alt="India Flag" /> India Headquarters:</div>
+                        <div> C/O ASHOK, SRIRAMPANDITH 269<br /> ADDIGANAHALLI, Yelahanka Rajanakunte,<br /> Bangalore North - 560064, Karnataka, India </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/cloudrigade" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com/cloudrigade" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/cloudrigade" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/cloudrigade" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919876543210" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
                 <div class="footer-section">
                     <h3>Services</h3>
@@ -912,52 +828,94 @@
                         <li><a href="cloud-migration.html">Cloud Migration</a></li>
                         <li><a href="cybersecurity.html">Cybersecurity</a></li>
                         <li><a href="devops.html">DevOps & Automation</a></li>
-                        <li><a href="data-analytics.html">Data Analytics</a></li>
                         <li><a href="digital-transformation.html">Digital Transformation</a></li>
-                        <li><a href="it-support.html">24/7 Support</a></li>
+                        <li><a href="data-ai.html">Data Analytics & AI</a></li>
+                        <li><a href="index.html#services">24/7 IT Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contact</h3>
+                    <h3>Company</h3>
                     <ul>
-                        <li>Phone: +91 80-4567-8901</li>
-                        <li>Email: info@cloudrigade.tech</li>
-                        <li>Address: Brigade Road, Bangalore</li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
                     </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+                    <p><strong>Email:</strong> info@cloudrigade.com</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.8rem; color: #FF1493;">Business Hours</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.4rem;">Monday - Friday: 9:00 AM - 7:00 PM</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.4rem;">Saturday: 10:00 AM - 4:00 PM</p>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Cloudrigade Technologies Pvt Ltd. All rights reserved.</p>
+                <p>© 2025 Cloudrigade Technologies Pvt. Ltd. All rights reserved. | CIN: U72900KA2020PTC135678 | Designed with ❤️ in India</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        (function () {
+            const options = { whatsapp: "+919876543210", call_to_action: "Message us", position: "right" };
+            const proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+            const s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            const x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        const header = document.querySelector('header');
+        mobileToggle.addEventListener('click', () => {
+            const isMenuOpen = navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.classList.toggle('fa-bars', !isMenuOpen);
+            icon.classList.toggle('fa-times', isMenuOpen);
+            if (isMenuOpen) { navMenu.style.top = `${header.offsetHeight}px`; }
+        });
+
+        document.querySelectorAll('.nav-item > a').forEach(link => {
+            const dropdown = link.nextElementSibling;
+            if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        link.parentElement.classList.toggle('mobile-dropdown-active');
+                    }
+                });
+            }
+        });
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const href = this.getAttribute('href');
+                if (href.length > 1) { 
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
                 }
             });
         });
 
-        // Header background on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 30px rgba(27, 41, 81, 0.2)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 2px 30px rgba(27, 41, 81, 0.15)';
-            }
-        });
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
