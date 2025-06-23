@@ -6,13 +6,12 @@
     <title>Digital Transformation Services - Cloudrigade Technologies</title>
     <meta name="description" content="Modernize your business processes with custom applications, API integrations, and cloud-native solutions designed for scale.">
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* CSS from the main page for a consistent design system */
         * {
             margin: 0;
             padding: 0;
@@ -22,15 +21,22 @@
         :root {
             --primary-blue: #1B2951;
             --secondary-blue: #2B3E75;
-            --accent-pink: #E91E63;
-            --accent-gradient: linear-gradient(135deg, #E91E63, #FF6B9D);
+            --accent-pink: #FF1493;
+            --bright-blue: #00BFFF;
+            --brand-gradient: linear-gradient(135deg, #FF1493, #00BFFF);
+            --accent-gradient: linear-gradient(135deg, #FF1493, #FF6B9D);
             --white: #FFFFFF;
             --light-gray: #F8F9FA;
             --text-gray: #6C757D;
             --border-gray: #E9ECEF;
             --success-green: #28a745;
-            --digital-purple: #8b5cf6;
-            --innovation-orange: #f59e0b;
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-heavy: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -38,117 +44,210 @@
             line-height: 1.6;
             color: var(--primary-blue);
             overflow-x: hidden;
+            font-weight: 400;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         /* Header Styles */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 2px 30px rgba(27, 41, 81, 0.15);
+            background: var(--white);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-gray);
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 1px;
+            text-decoration: none;
         }
 
-        .logo-icon {
-            width: 45px;
-            height: 45px;
+        .custom-logo {
+            height: 75px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            transition: all 0.3s ease;
         }
 
-        .logo-icon svg {
-            width: 100%;
-            height: 100%;
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
         }
 
         .logo-text {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--accent-gradient);
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: var(--brand-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
+            letter-spacing: 1px;
+            line-height: 1;
         }
 
         .logo-tagline {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-gray);
-            margin-top: -5px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 1px;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
             align-items: center;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-menu a {
             text-decoration: none;
             color: var(--primary-blue);
             font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
         }
 
         .nav-menu a:hover {
             color: var(--accent-pink);
         }
 
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border-gray);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 1rem 0;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--light-gray);
+            color: var(--accent-pink);
+            border-left-color: var(--accent-pink);
+        }
+        
+        .dropdown-menu .coming-soon {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .dropdown-menu .coming-soon:hover {
+            color: var(--accent-pink);
+            opacity: 1;
+            background: rgba(255, 20, 147, 0.05);
+        }
+
+        .dropdown-menu .coming-soon::after {
+            content: "SOON";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #ff6b35, #0066cc);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
         .cta-button {
-            background: var(--accent-gradient);
+            background: var(--brand-gradient);
             color: var(--white);
             padding: 12px 24px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(233, 30, 99, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 20, 147, 0.3);
+            white-space: nowrap;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(233, 30, 99, 0.4);
+            box-shadow: 0 8px 30px rgba(255, 20, 147, 0.4);
+            color: var(--white);
         }
 
-        /* Service Hero Section */
-        .service-hero {
-            background: linear-gradient(135deg, 
-                rgba(27, 41, 81, 0.95) 0%, 
-                rgba(43, 62, 117, 0.95) 50%, 
-                rgba(233, 30, 99, 0.85) 100%),
-                url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2125&q=80');
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(27, 41, 81, 0.95) 0%, rgba(43, 62, 117, 0.95) 50%, rgba(255, 20, 147, 0.85) 100%), url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2125&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             color: var(--white);
-            padding: 140px 0 100px;
+            padding: 160px 0 120px;
             position: relative;
+            overflow: hidden;
         }
 
-        .service-hero::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -161,8 +260,8 @@
 
         .hero-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
             align-items: center;
             position: relative;
             z-index: 2;
@@ -170,189 +269,161 @@
 
         .hero-text h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
             opacity: 0.95;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
         }
 
         .btn-primary {
-            background: var(--accent-gradient);
+            background: var(--brand-gradient);
             color: var(--white);
-            padding: 16px 32px;
+            padding: 18px 36px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.4);
             display: inline-block;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.5);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5);
+            color: var(--white);
         }
 
-        .transformation-journey {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+        /* Generic Section Styles */
+        .transformation-areas, .innovation-framework, .success-stories, .pricing-section, .cta-section {
+            padding: 120px 0;
         }
-
-        .journey-steps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            width: 100%;
+        .innovation-framework, .cta-section {
+            background: var(--light-gray);
         }
-
-        .journey-step {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .journey-step:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .journey-step i {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .journey-step h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .journey-step::after {
-            content: '→';
-            position: absolute;
-            right: -15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.2rem;
-        }
-
-        .journey-step:last-child::after {
-            display: none;
-        }
-
-        .transformation-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            width: 100%;
-        }
-
-        .stat-item {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Transformation Areas Section */
-        .transformation-areas {
-            padding: 100px 0;
+        .transformation-areas, .pricing-section {
             background: var(--white);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
 
         .section-header h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--primary-blue);
         }
 
         .section-header p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-gray);
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Digital Transformation Specific Content Styles */
+        .transformation-journey {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .journey-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            gap: 1rem;
+        }
+        .journey-step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 1rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            flex: 1;
+        }
+        .journey-step i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .journey-step h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .transformation-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+        }
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 15px;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
         }
 
+        /* Transformation Areas */
         .areas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2.5rem;
-            margin-top: 3rem;
         }
-
         .area-card {
             background: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: 24px;
             padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
-            border-left: 5px solid var(--digital-purple);
         }
-
         .area-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            border-color: var(--accent-pink);
+            box-shadow: var(--shadow-heavy);
         }
-
         .area-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--digital-purple), #a78bfa);
+            background: var(--brand-gradient);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
         }
-
         .area-icon i {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--white);
         }
-
         .area-card h3 {
             font-family: 'Poppins', sans-serif;
             font-size: 1.5rem;
@@ -360,428 +431,449 @@
             margin-bottom: 1rem;
             color: var(--primary-blue);
         }
-
         .area-card p {
             color: var(--text-gray);
             margin-bottom: 1.5rem;
-            line-height: 1.7;
         }
-
         .area-features {
             list-style: none;
+            padding: 0;
         }
-
         .area-features li {
             display: flex;
             align-items: center;
             gap: 0.8rem;
             margin-bottom: 0.8rem;
-            font-size: 0.95rem;
         }
-
         .area-features i {
             color: var(--success-green);
-            font-size: 1rem;
         }
 
         /* Innovation Framework */
-        .innovation-framework {
-            padding: 100px 0;
-            background: var(--light-gray);
-        }
-
         .framework-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 4rem;
             align-items: center;
         }
-
         .framework-text h2 {
             font-family: 'Poppins', sans-serif;
             font-size: 2.8rem;
             font-weight: 600;
-            margin-bottom: 2rem;
-            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
         }
-
         .framework-pillars {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
-
         .pillar-item {
             background: var(--white);
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-medium);
             transition: all 0.3s ease;
         }
-
         .pillar-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--shadow-heavy);
         }
-
         .pillar-item i {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: var(--innovation-orange);
+            color: var(--accent-pink);
         }
-
         .pillar-item h4 {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
+            font-size: 1.1rem;
             margin-bottom: 0.5rem;
             color: var(--primary-blue);
         }
 
-        .pillar-item p {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-
         /* Success Stories */
         .success-stories {
-            padding: 100px 0;
-            background: var(--primary-blue);
+            background-color: var(--secondary-blue);
             color: var(--white);
         }
-
+        .success-stories .section-header h2 {
+            color: var(--white);
+        }
+        .success-stories .section-header p {
+            color: rgba(255,255,255,0.8);
+        }
         .stories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
-
         .story-card {
             background: rgba(255, 255, 255, 0.1);
             padding: 2.5rem;
             border-radius: 20px;
-            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
         }
-
-        .story-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
         .story-card h4 {
             font-family: 'Poppins', sans-serif;
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
-
         .story-card p {
             margin-bottom: 1.5rem;
             opacity: 0.9;
         }
-
         .story-results {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
-
         .result-metric {
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
         }
-
         .result-number {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-
         .result-label {
             font-size: 0.8rem;
-            opacity: 0.9;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        /* Pricing Section */
-        .pricing-section {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
+        
+        /* Pricing Section (reusing main page classes) */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
             margin-top: 3rem;
         }
-
         .pricing-card {
             background: var(--white);
-            border: 2px solid var(--border-gray);
-            border-radius: 25px;
-            padding: 2.5rem;
+            border-radius: 24px;
+            padding: 3rem;
             text-align: center;
             position: relative;
             transition: all 0.3s ease;
+            border: 2px solid var(--border-gray);
         }
-
-        .pricing-card.featured {
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .pricing-card.popular {
             border-color: var(--accent-pink);
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
-
-        .pricing-card.featured::before {
+        .pricing-card.popular::before {
             content: 'Most Popular';
             position: absolute;
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--accent-gradient);
+            background: var(--brand-gradient);
             color: var(--white);
             padding: 8px 25px;
             border-radius: 25px;
             font-size: 0.85rem;
             font-weight: 600;
         }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
         .plan-name {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 600;
             color: var(--primary-blue);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
-
         .plan-price {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            background: var(--accent-gradient);
+            font-family: 'Poppins', sans-serif;
+            background: var(--brand-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
-
         .plan-period {
             color: var(--text-gray);
             margin-bottom: 2rem;
+            font-size: 1rem;
         }
-
         .plan-features {
             list-style: none;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             text-align: left;
+            padding: 0;
         }
-
         .plan-features li {
             padding: 0.8rem 0;
-            border-bottom: 1px solid var(--border-gray);
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--border-gray);
         }
-
         .plan-features li:last-child {
             border-bottom: none;
         }
-
-        .feature-check {
+        .plan-features i, .feature-check {
             color: var(--success-green);
-            font-weight: 600;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 100px 0;
-            background: var(--light-gray);
-            text-align: center;
-        }
-
-        .cta-content h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary-blue);
-        }
-
-        .cta-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--text-gray);
+            font-size: 1rem;
+            width: 16px;
         }
 
         /* Footer */
         footer {
-            background: var(--primary-blue);
-            color: var(--white);
-            padding: 4rem 0 1rem;
+            background-color: #111;
+            color: #eee;
+            font-family: 'Inter', sans-serif;
+            padding: 60px 0 40px;
         }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section ul li a {
-            color: rgba(255, 255, 255, 0.8);
+        footer a {
+            color: #eee;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-
-        .footer-section ul li a:hover {
-            color: var(--accent-pink);
+        footer a:hover {
+            color: #FF1493;
         }
-
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+        }
+        .footer-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            color: #FFFFFF;
+            font-size: 1.4rem;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .footer-section p {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+        .address-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .india-flag {
+            width: 24px;
+            height: 16px;
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+        .address-header {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            color: #FF1493;
+            font-size: 1.1rem;
+        }
+        .map-link {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #FF1493, #0A1628);
+            color: #FFFFFF;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 30px;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 20, 147, 0.4);
+            font-size: 0.9rem;
+        }
+        .map-link:hover {
+            transform: translateY(-2px);
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: linear-gradient(135deg, #FF1493, #0A1628);
+            border-color: #FF1493;
+            transform: translateY(-3px);
+        }
+        .social-links i {
+            font-size: 1.2rem;
+        }
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 2.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 0.8;
         }
+        .footer-bottom p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-in-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .footer-content { grid-template-columns: 1fr 1fr; }
+        }
+
         @media (max-width: 768px) {
-            .hero-content,
-            .framework-content {
-                grid-template-columns: 1fr;
-                text-align: center;
+            .mobile-menu-toggle { display: block; }
+            .nav-menu {
+                position: fixed; top: 91px; left: 0; width: 100%;
+                background: var(--white); flex-direction: column;
+                padding: 2rem 0; box-shadow: var(--shadow-medium);
+                transform: translateY(-150%); opacity: 0; visibility: hidden;
+                transition: all 0.3s ease; border-top: 1px solid var(--border-gray);
             }
-
-            .hero-text h1 {
-                font-size: 2.2rem;
+            .nav-menu.active {
+                transform: translateY(0); opacity: 1; visibility: visible;
             }
-
-            .journey-steps {
-                grid-template-columns: 1fr;
+            .nav-menu li { width: 100%; text-align: center; }
+            .dropdown-menu {
+                position: static; opacity: 1; visibility: visible; transform: none;
+                box-shadow: none; border: none; background: var(--light-gray);
+                margin-top: 0.5rem; padding: 0.5rem 0; display: none;
             }
-
-            .journey-step::after {
-                display: none;
-            }
-
-            .transformation-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .framework-pillars {
+            .nav-item.mobile-dropdown-active .dropdown-menu { display: block; }
+            .hero-content, .framework-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1, .framework-text h2 { font-size: 2.5rem; }
+            .journey-steps, .transformation-stats, .framework-pillars, .stories-grid, .areas-grid, .pricing-grid {
                 grid-template-columns: 1fr;
             }
-
-            .pricing-card.featured {
-                transform: none;
-            }
-
-            .section-header h2 {
-                font-size: 2.2rem;
-            }
+            .pricing-card.popular { transform: none; }
+            .section-header h2 { font-size: 2.2rem; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .social-links { justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <nav class="nav-container">
-                <div class="logo-container">
-                    <div class="logo-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#E91E63;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#FF6B9D;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <path d="M75 35c8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15H25c-8.284 0-15-6.716-15-15s6.716-15 15-15c0-11.046 8.954-20 20-20s20 8.954 20 20c5.523 0 10 4.477 10 10z" fill="url(#cloudGradient)" opacity="0.9"/>
-                            <path d="M45 25c-8.284 0-15 6.716-15 15 0 2.5.5 4.9 1.4 7.1C33.6 45.6 35.7 44 38.2 44h31.6c6.6 0 12-5.4 12-12s-5.4-12-12-12c-1.3 0-2.5.2-3.7.6C63.2 15.2 56.8 10 49 10c-7.8 0-14.2 5.2-17.1 12.4C30.6 23.2 29.4 24 28 24c-3.3 0-6 2.7-6 6s2.7 6 6 6h11c2.8-7.2 9.8-12 18-12z" fill="rgba(255,255,255,0.3)"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <a href="index.html" class="logo-text">CLOUDRIGADE</a>
+                <a href="index.html" class="logo-container">
+                    <img src="logo.png" alt="Cloudrigade Technologies Logo" class="custom-logo">
+                    <div class="logo-text-container">
+                        <div class="logo-text">CLOUDRIGADE</div>
                         <div class="logo-tagline">WHERE CLOUD MEETS CONFIDENCE</div>
                     </div>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li class="nav-item">
+                        <a href="index.html#services">Services <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="index.html#services">Cloud Migration & Management</a>
+                            <a href="index.html#services">Cybersecurity Solutions</a>
+                            <a href="devops.html">DevOps & Automation</a>
+                            <a href="digital-transformation.html">Digital Transformation</a>
+                            <a href="index.html#services">Data Analytics & AI</a>
+                            <a href="index.html#services">24/7 IT Support</a>
+                            <a href="index.html#services" class="coming-soon">🎮 Management Games (Coming Soon)</a>
+                            <a href="index.html#services" class="coming-soon">🤖 AION Software Suite (Coming Soon)</a>
+                        </div>
+                    </li>
                     <li><a href="index.html#pricing">Pricing</a></li>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                     <li><a href="index.html#contact" class="cta-button">Get Free Assessment</a></li>
                 </ul>
+                <button class="mobile-menu-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Service Hero Section -->
-    <section class="service-hero">
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Digital Transformation</h1>
-                    <p>Modernize your business processes with custom applications, API integrations, and cloud-native solutions designed for scale and future growth.</p>
-                    <a href="#contact" class="btn-primary">Start Digital Journey</a>
+                    <p>Modernize your business with custom applications, API integrations, and cloud-native solutions designed for scale and future growth.</p>
+                    <a href="index.html#contact" class="btn-primary">Start Your Digital Journey</a>
                 </div>
                 <div class="transformation-journey">
                     <div class="journey-steps">
                         <div class="journey-step">
                             <i class="fas fa-search"></i>
                             <h4>Assess</h4>
-                            <p>Current State Analysis</p>
                         </div>
                         <div class="journey-step">
                             <i class="fas fa-lightbulb"></i>
                             <h4>Strategize</h4>
-                            <p>Digital Roadmap</p>
                         </div>
                         <div class="journey-step">
                             <i class="fas fa-cogs"></i>
                             <h4>Implement</h4>
-                            <p>Solution Deployment</p>
                         </div>
                         <div class="journey-step">
                             <i class="fas fa-chart-line"></i>
                             <h4>Optimize</h4>
-                            <p>Continuous Improvement</p>
                         </div>
                     </div>
                     <div class="transformation-stats">
                         <div class="stat-item">
                             <div class="stat-number">70%</div>
-                            <div class="stat-label">Process Efficiency Gain</div>
+                            <div class="stat-label">Efficiency Gain</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">3x</div>
-                            <div class="stat-label">Faster Time to Market</div>
+                            <div class="stat-label">Faster Market Entry</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">45%</div>
@@ -793,15 +885,14 @@
         </div>
     </section>
 
-    <!-- Transformation Areas Section -->
     <section class="transformation-areas">
         <div class="container">
             <div class="section-header">
                 <h2>Complete Digital Transformation</h2>
-                <p>Transform every aspect of your business with our comprehensive digital solutions</p>
+                <p>Transform every aspect of your business with our comprehensive digital solutions.</p>
             </div>
             <div class="areas-grid">
-                <div class="area-card">
+                <div class="area-card fade-in">
                     <div class="area-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
@@ -809,12 +900,11 @@
                     <p>Build scalable, modern applications tailored to your business needs using cutting-edge technologies.</p>
                     <ul class="area-features">
                         <li><i class="fas fa-check"></i> Web & Mobile Applications</li>
-                        <li><i class="fas fa-check"></i> Progressive Web Apps (PWA)</li>
                         <li><i class="fas fa-check"></i> Cloud-Native Architecture</li>
                         <li><i class="fas fa-check"></i> Microservices Design</li>
                     </ul>
                 </div>
-                <div class="area-card">
+                <div class="area-card fade-in">
                     <div class="area-icon">
                         <i class="fas fa-plug"></i>
                     </div>
@@ -824,10 +914,9 @@
                         <li><i class="fas fa-check"></i> RESTful API Development</li>
                         <li><i class="fas fa-check"></i> Third-Party Integrations</li>
                         <li><i class="fas fa-check"></i> API Gateway Management</li>
-                        <li><i class="fas fa-check"></i> Webhook Implementation</li>
                     </ul>
                 </div>
-                <div class="area-card">
+                <div class="area-card fade-in">
                     <div class="area-icon">
                         <i class="fas fa-sync-alt"></i>
                     </div>
@@ -836,11 +925,10 @@
                     <ul class="area-features">
                         <li><i class="fas fa-check"></i> Workflow Automation</li>
                         <li><i class="fas fa-check"></i> Document Management Systems</li>
-                        <li><i class="fas fa-check"></i> Approval Process Automation</li>
                         <li><i class="fas fa-check"></i> Task Scheduling & Management</li>
                     </ul>
                 </div>
-                <div class="area-card">
+                <div class="area-card fade-in">
                     <div class="area-icon">
                         <i class="fas fa-users"></i>
                     </div>
@@ -850,10 +938,9 @@
                         <li><i class="fas fa-check"></i> Customer Portal Development</li>
                         <li><i class="fas fa-check"></i> Omnichannel Solutions</li>
                         <li><i class="fas fa-check"></i> Personalization Engines</li>
-                        <li><i class="fas fa-check"></i> Customer Journey Mapping</li>
                     </ul>
                 </div>
-                <div class="area-card">
+                <div class="area-card fade-in">
                     <div class="area-icon">
                         <i class="fas fa-database"></i>
                     </div>
@@ -863,10 +950,9 @@
                         <li><i class="fas fa-check"></i> System Assessment & Planning</li>
                         <li><i class="fas fa-check"></i> Data Migration & Conversion</li>
                         <li><i class="fas fa-check"></i> Architecture Refactoring</li>
-                        <li><i class="fas fa-check"></i> Performance Optimization</li>
                     </ul>
                 </div>
-                <div class="area-card">
+                <div class="area-card fade-in">
                     <div class="area-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
@@ -875,60 +961,56 @@
                     <ul class="area-features">
                         <li><i class="fas fa-check"></i> Zero Trust Security Model</li>
                         <li><i class="fas fa-check"></i> Identity & Access Management</li>
-                        <li><i class="fas fa-check"></i> Regulatory Compliance (GDPR, PDPB)</li>
-                        <li><i class="fas fa-check"></i> Security Audit & Testing</li>
+                        <li><i class="fas fa-check"></i> Regulatory Compliance</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Innovation Framework -->
     <section class="innovation-framework">
         <div class="container">
             <div class="framework-content">
-                <div class="framework-text">
+                <div class="framework-text fade-in">
                     <h2>Our Innovation Framework</h2>
-                    <p>Our proven methodology ensures successful digital transformation with measurable business outcomes and sustainable growth.</p>
-                    <p>We combine industry best practices with innovative approaches to deliver solutions that not only meet today's needs but also prepare your business for tomorrow's challenges.</p>
+                    <p>Our proven methodology ensures successful digital transformation with measurable business outcomes and sustainable growth. We combine best practices with innovative approaches to deliver solutions that not only meet today's needs but also prepare you for tomorrow's challenges.</p>
                 </div>
                 <div class="framework-pillars">
-                    <div class="pillar-item">
+                    <div class="pillar-item fade-in">
                         <i class="fas fa-rocket"></i>
                         <h4>Agile Development</h4>
-                        <p>Rapid prototyping and iterative development for faster time-to-market</p>
+                        <p>Rapid prototyping and iterative development for faster time-to-market.</p>
                     </div>
-                    <div class="pillar-item">
+                    <div class="pillar-item fade-in">
                         <i class="fas fa-users-cog"></i>
                         <h4>User-Centric Design</h4>
-                        <p>Focus on user experience and customer journey optimization</p>
+                        <p>Focus on user experience and customer journey optimization.</p>
                     </div>
-                    <div class="pillar-item">
+                    <div class="pillar-item fade-in">
                         <i class="fas fa-cloud"></i>
                         <h4>Cloud-First Approach</h4>
-                        <p>Scalable, secure, and cost-effective cloud-native solutions</p>
+                        <p>Scalable, secure, and cost-effective cloud-native solutions.</p>
                     </div>
-                    <div class="pillar-item">
+                    <div class="pillar-item fade-in">
                         <i class="fas fa-chart-line"></i>
                         <h4>Data-Driven Insights</h4>
-                        <p>Analytics and AI integration for intelligent business decisions</p>
+                        <p>Analytics and AI integration for intelligent business decisions.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Success Stories -->
     <section class="success-stories">
         <div class="container">
             <div class="section-header">
                 <h2>Digital Transformation Success Stories</h2>
-                <p>Real results from businesses that transformed with Cloudrigade Technologies</p>
+                <p>Real results from businesses that transformed with Cloudrigade Technologies.</p>
             </div>
             <div class="stories-grid">
-                <div class="story-card">
+                <div class="story-card fade-in">
                     <h4>E-commerce Platform Modernization</h4>
-                    <p>Transformed a traditional retail business into a modern e-commerce platform with mobile apps, inventory management, and customer analytics.</p>
+                    <p>Transformed a traditional retailer into a modern e-commerce platform with mobile apps, inventory management, and customer analytics.</p>
                     <div class="story-results">
                         <div class="result-metric">
                             <div class="result-number">300%</div>
@@ -940,7 +1022,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="story-card">
+                <div class="story-card fade-in">
                     <h4>Healthcare Digital Transformation</h4>
                     <p>Digitized patient management, telemedicine capabilities, and automated billing for a multi-location healthcare provider.</p>
                     <div class="story-results">
@@ -954,7 +1036,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="story-card">
+                <div class="story-card fade-in">
                     <h4>Manufacturing Automation</h4>
                     <p>Implemented IoT sensors, predictive maintenance, and automated quality control for a smart manufacturing facility.</p>
                     <div class="story-results">
@@ -972,55 +1054,53 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section class="pricing-section">
         <div class="container">
             <div class="section-header">
                 <h2>Digital Transformation Packages</h2>
-                <p>Choose the transformation package that accelerates your digital innovation journey</p>
+                <p>Choose the transformation package that accelerates your digital innovation journey.</p>
             </div>
             <div class="pricing-grid">
-                <div class="pricing-card">
+                <div class="pricing-card fade-in">
                     <div class="plan-name">Digital Foundation</div>
-                    <div class="plan-price">₹1,50,000</div>
-                    <div class="plan-period">one-time setup</div>
+                    <div class="plan-price">₹1.5L</div>
+                    <div class="plan-period">one-time project</div>
                     <ul class="plan-features">
-                        <li>Digital Strategy & Roadmap <span class="feature-check">✓</span></li>
-                        <li>Basic Application Development <span class="feature-check">✓</span></li>
-                        <li>API Integration (up to 5) <span class="feature-check">✓</span></li>
-                        <li>Process Automation (2 workflows) <span class="feature-check">✓</span></li>
-                        <li>Mobile-Responsive Design <span class="feature-check">✓</span></li>
-                        <li>60 Days Support <span class="feature-check">✓</span></li>
+                        <li><i class="fas fa-check"></i>Digital Strategy & Roadmap</li>
+                        <li><i class="fas fa-check"></i>Basic Application Development</li>
+                        <li><i class="fas fa-check"></i>API Integration (up to 5)</li>
+                        <li><i class="fas fa-check"></i>Process Automation (2 workflows)</li>
+                        <li><i class="fas fa-check"></i>Mobile-Responsive Design</li>
+                        <li><i class="fas fa-check"></i>60 Days Support</li>
                     </ul>
                     <a href="index.html#contact" class="btn-primary">Get Started</a>
                 </div>
-                <div class="pricing-card featured">
+                <div class="pricing-card popular fade-in">
                     <div class="plan-name">Complete Transformation</div>
-                    <div class="plan-price">₹4,50,000</div>
-                    <div class="plan-period">comprehensive package</div>
+                    <div class="plan-price">₹4.5L</div>
+                    <div class="plan-period">comprehensive project</div>
                     <ul class="plan-features">
-                        <li>End-to-End Digital Transformation <span class="feature-check">✓</span></li>
-                        <li>Custom Application Suite <span class="feature-check">✓</span></li>
-                        <li>Advanced API & Integration Hub <span class="feature-check">✓</span></li>
-                        <li>Business Process Automation <span class="feature-check">✓</span></li>
-                        <li>Customer Experience Platform <span class="feature-check">✓</span></li>
-                        <li>Analytics & Reporting Dashboard <span class="feature-check">✓</span></li>
-                        <li>6 Months Support & Optimization <span class="feature-check">✓</span></li>
+                        <li><i class="fas fa-check"></i>End-to-End Digital Transformation</li>
+                        <li><i class="fas fa-check"></i>Custom Application Suite</li>
+                        <li><i class="fas fa-check"></i>Advanced API & Integration Hub</li>
+                        <li><i class="fas fa-check"></i>Business Process Automation</li>
+                        <li><i class="fas fa-check"></i>Customer Experience Platform</li>
+                        <li><i class="fas fa-check"></i>Analytics & Reporting</li>
+                        <li><i class="fas fa-check"></i>6 Months Support</li>
                     </ul>
-                    <a href="index.html#contact" class="btn-primary">Get Started</a>
+                    <a href="index.html#contact" class="btn-primary">Choose Plan</a>
                 </div>
-                <div class="pricing-card">
+                <div class="pricing-card fade-in">
                     <div class="plan-name">Enterprise Innovation</div>
                     <div class="plan-price">Custom</div>
                     <div class="plan-period">tailored solution</div>
                     <ul class="plan-features">
-                        <li>Enterprise-Scale Transformation <span class="feature-check">✓</span></li>
-                        <li>AI/ML Integration <span class="feature-check">✓</span></li>
-                        <li>Legacy System Modernization <span class="feature-check">✓</span></li>
-                        <li>Multi-Channel Digital Ecosystem <span class="feature-check">✓</span></li>
-                        <li>Advanced Security & Compliance <span class="feature-check">✓</span></li>
-                        <li>Dedicated Transformation Team <span class="feature-check">✓</span></li>
-                        <li>12 Months Managed Support <span class="feature-check">✓</span></li>
+                        <li><i class="fas fa-check"></i>Enterprise-Scale Transformation</li>
+                        <li><i class="fas fa-check"></i>AI/ML Integration</li>
+                        <li><i class="fas fa-check"></i>Legacy System Modernization</li>
+                        <li><i class="fas fa-check"></i>Advanced Security & Compliance</li>
+                        <li><i class="fas fa-check"></i>Dedicated Transformation Team</li>
+                        <li><i class="fas fa-check"></i>12 Months Managed Support</li>
                     </ul>
                     <a href="index.html#contact" class="btn-primary">Contact Sales</a>
                 </div>
@@ -1028,108 +1108,139 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Business?</h2>
-                <p>Start your digital transformation journey today and unlock new opportunities for growth and innovation.</p>
-                <a href="index.html#contact" class="btn-primary">Begin Transformation</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Cloudrigade Technologies</h3>
-                    <p>Empowering businesses across India with cutting-edge cloud solutions and digital transformation services.</p>
+                    <p>Empowering businesses across India with cutting-edge cloud solutions and digital transformation services. Where cloud meets confidence.</p>
+                    <div class="address-box">
+                        <div class="address-header">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" class="india-flag" alt="India Flag" /> India Headquarters:
+                        </div>
+                        <div>
+                            C/O ASHOK, SRIRAMPANDITH 269<br /> ADDIGANAHALLI, Yelahanka Rajanakunte,<br /> Bangalore North - 560064, Karnataka, India
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Yelahanka+Rajanakunte+Bangalore" target="_blank" class="map-link">
+                            🚗 <strong>Get Directions</strong>
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/cloudrigade" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com/cloudrigade" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/cloudrigade" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/cloudrigade" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919876543210" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 <div class="footer-section">
                     <h3>Services</h3>
                     <ul>
-                        <li><a href="cloud-migration.html">Cloud Migration</a></li>
-                        <li><a href="cybersecurity.html">Cybersecurity</a></li>
+                        <li><a href="index.html#services">Cloud Migration</a></li>
+                        <li><a href="index.html#services">Cybersecurity</a></li>
                         <li><a href="devops.html">DevOps & Automation</a></li>
-                        <li><a href="data-analytics.html">Data Analytics</a></li>
                         <li><a href="digital-transformation.html">Digital Transformation</a></li>
-                        <li><a href="it-support.html">24/7 Support</a></li>
+                        <li><a href="index.html#services">Data Analytics & AI</a></li>
+                        <li><a href="index.html#services">24/7 IT Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contact</h3>
+                    <h3>Company</h3>
                     <ul>
-                        <li>Phone: +91 80-4567-8901</li>
-                        <li>Email: info@cloudrigade.tech</li>
-                        <li>Address: Brigade Road, Bangalore</li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
                     </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+                    <p><strong>Email:</strong> info@cloudrigade.com</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.8rem; color: #FF1493;">Business Hours</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.4rem;">Monday - Friday: 9:00 AM - 7:00 PM</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.4rem;">Saturday: 10:00 AM - 4:00 PM</p>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Cloudrigade Technologies Pvt Ltd. All rights reserved.</p>
+                <p>© 2025 Cloudrigade Technologies Pvt. Ltd. All rights reserved. | CIN: U72900KA2020PTC135678 | Designed with ❤️ in India</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        (function () {
+            const options = {
+                whatsapp: "+919876543210",
+                call_to_action: "Message us",
+                position: "right",
+            };
+            const proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+            const s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            const x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        const header = document.querySelector('header');
+        mobileToggle.addEventListener('click', () => {
+            const isMenuOpen = navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.classList.toggle('fa-bars', !isMenuOpen);
+            icon.classList.toggle('fa-times', isMenuOpen);
+            if (isMenuOpen) {
+                navMenu.style.top = `${header.offsetHeight}px`;
+            }
+        });
+
+        // Mobile dropdown toggle
+        document.querySelectorAll('.nav-item').forEach(item => {
+            const link = item.querySelector('a');
+            if (item.querySelector('.dropdown-menu')) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768 && link.getAttribute('href').includes('#')) {
+                        e.preventDefault();
+                        item.classList.toggle('mobile-dropdown-active');
+                    }
+                });
+            }
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
                 }
             });
         });
+
+        // Fade in animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
         // Header background on scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 30px rgba(27, 41, 81, 0.2)';
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 2px 30px rgba(27, 41, 81, 0.15)';
+                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
             }
-        });
-
-        // Animate journey steps on scroll
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'slideInUp 0.6s ease forwards';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.journey-step, .area-card, .pillar-item').forEach(el => {
-            observer.observe(el);
         });
     </script>
-
-    <style>
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
 </body>
 </html>
