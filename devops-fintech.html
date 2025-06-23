@@ -1,341 +1,1488 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cloudrigade | DevOps Automation for Fintech</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps & Automation Services - Cloudrigade Technologies</title>
+    <meta name="description" content="Streamline your development pipeline with CI/CD implementation, infrastructure as code, and automated testing frameworks.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Copied all styles from the main page for consistency */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+        :root {
+            --primary-blue: #1B2951;
+            --secondary-blue: #2B3E75;
+            --accent-pink: #FF1493;
+            --bright-blue: #00BFFF;
+            --brand-gradient: linear-gradient(135deg, #FF1493, #00BFFF);
+            --accent-gradient: linear-gradient(135deg, #FF1493, #FF6B9D);
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-gray: #6C757D;
+            --border-gray: #E9ECEF;
+            --success-green: #28a745;
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-heavy: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --devops-orange: #ff6b35; /* Added for DevOps specific elements if needed */
+        }
 
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      /* Background image with dark overlay */
-      background: 
-        linear-gradient(rgba(10, 25, 40, 0.7), rgba(10, 25, 40, 0.7)),
-        url('DevOps.jpg') no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      color: #e1e8eb; /* light text */
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .navbar-brand {
-      font-weight: 700;
-      font-size: 1.6rem;
-      background: linear-gradient(135deg, #0d6efd, #20c997);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-blue);
+            overflow-x: hidden;
+            font-weight: 400;
+        }
 
-    .navbar-brand img {
-      width: 60px;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-    .navbar-nav .nav-link {
-      font-weight: 500;
-      color: #0d6efd;
-      margin: 0 1rem;
-      transition: color 0.2s ease;
-    }
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-gray);
+        }
 
-    .navbar-nav .nav-link:hover {
-      color: #20c997;
-    }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+        }
 
-    .btn-cta {
-      background: linear-gradient(to right, #0d6efd, #20c997);
-      color: white;
-      font-weight: 600;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      transition: 0.3s ease-in-out;
-    }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1px;
+            text-decoration: none; /* Make the whole container clickable */
+        }
 
-    .navbar-toggler {
-      border-color: #0d6efd;
-    }
+        .custom-logo {
+            height: 75px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
 
-    .navbar-toggler-icon {
-      filter: invert(26%) sepia(79%) saturate(748%) hue-rotate(177deg) brightness(93%) contrast(95%);
-    }
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+        }
 
-    main {
-      flex-grow: 1;
-      max-width: 1000px;
-      margin: 3rem auto 4rem auto;
-      padding: 0 1rem;
-      width: 90%;
-    }
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
 
-    .glass {
-      position: relative;
-      background: rgba(15, 25, 35, 0.6); /* dark translucent for better contrast */
-      border-radius: 20px;
-      padding: 2.5rem;
-      color: #e1e8eb;
-      text-align:;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        .logo-tagline {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 1px;
+        }
 
-    .text-teal {
-      color: #20c997;
-    }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2.5rem;
+        }
 
-    /* Lighten headings for better readability */
-    h1, h4 {
-      color: #a4d7c6;
-    }
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
 
-    p, li {
-      color: #d1d8dc;
-      font-weight: 400;
-    }
+        .nav-menu a:hover {
+            color: var(--accent-pink);
+        }
 
-    ul {
-      padding-left: 1.2rem;
-      text-align: left;
-      max-width: 600px;
-      margin: 0.5rem auto 0 auto;
-    }
+        /* Services Dropdown */
+        .nav-item {
+            position: relative;
+        }
 
-    footer {
-      background-color: #111;
-      color: #eee;
-      font-family: 'Open Sans', sans-serif;
-      padding-top: 40px;
-      padding-bottom: 30px;
-    }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border-gray);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 1rem 0;
+        }
 
-    footer a {
-      color: #eee;
-      text-decoration: none;
-    }
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
 
-    footer a:hover {
-      color: #20C997;
-    }
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            white-space: nowrap;
+        }
 
-    .address-box {
-      background-color: #1c1c1c;
-      padding: 15px 20px;
-      border-radius: 12px;
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 0.95rem;
-    }
+        .dropdown-menu a:hover {
+            background: var(--light-gray);
+            color: var(--accent-pink);
+            border-left-color: var(--accent-pink);
+        }
 
-    .india-flag {
-      width: 24px;
-      height: 16px;
-      margin-right: 8px;
-      border-radius: 2px;
-      box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    }
+        .dropdown-menu .coming-soon {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            opacity: 0.8;
+            position: relative;
+        }
 
-    .address-header {
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: #20C997;
-    }
+        .dropdown-menu .coming-soon:hover {
+            color: var(--accent-pink);
+            opacity: 1;
+            background: rgba(255, 20, 147, 0.05);
+        }
 
-    .map-link {
-      align-self: flex-start;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background-color: #20C997;
-      color: #111;
-      font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 25px;
-      transition: 0.3s ease;
-      box-shadow: 0 3px 6px rgba(32, 201, 151, 0.4);
-      text-decoration: none;
-    }
+        .dropdown-menu .coming-soon::after {
+            content: "SOON";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #ff6b35, #0066cc);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
 
-    .map-link:hover {
-      background-color: #1ab089;
-      color: white;
-      box-shadow: 0 6px 12px rgba(26, 176, 137, 0.6);
-      text-decoration: none;
-    }
+        .cta-button {
+            background: var(--brand-gradient);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 20, 147, 0.3);
+            white-space: nowrap;
+        }
 
-    @media (max-width: 576px) {
-      .address-box {
-        font-size: 0.9rem;
-      }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 20, 147, 0.4);
+            color: var(--white);
+        }
 
-      main {
-        margin: 2rem auto 3rem auto;
-      }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+            padding: 8px;
+        }
 
-      .navbar-nav .nav-link {
-        margin: 0 0.5rem;
-      }
-    }
-  </style>
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, 
+                rgba(27, 41, 81, 0.95) 0%, 
+                rgba(43, 62, 117, 0.95) 50%, 
+                rgba(233, 30, 99, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            padding: 160px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .hero-text p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--brand-gradient);
+            color: var(--white);
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.4);
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+            padding: 18px 36px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+            border-color: var(--white);
+        }
+
+        /* Generic Section Styles */
+        .value-prop, .services, .pricing, .process, .contact, .tools-section, .benefits-section, .cta-section {
+            padding: 120px 0;
+        }
+        .value-prop, .pricing, .tools-section, .cta-section {
+             background: var(--light-gray);
+        }
+        .services, .process, .contact {
+             background: var(--white);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+            letter-spacing: 1px;
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        /* Styles for Unique DevOps Content */
+        .devops-pipeline {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .pipeline-flow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .pipeline-step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 120px;
+        }
+        .pipeline-step i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .pipeline-arrow {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.5rem;
+        }
+        .devops-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* DevOps Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: 24px;
+            padding: 3rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .service-card:hover {
+            border-color: var(--accent-pink);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.08);
+            transform: translateY(-8px);
+        }
+        .service-card.devops-card { /* Specific style for devops page */
+             border-left: 5px solid var(--devops-orange);
+        }
+        .service-card.devops-card:hover {
+             border-color: var(--devops-orange);
+             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+             transform: translateY(-15px);
+        }
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--brand-gradient);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .service-icon.devops-icon { /* Specific style */
+            background: linear-gradient(135deg, var(--devops-orange), #ff8f65);
+        }
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--white);
+        }
+        .service-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+        .service-card p {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        .service-features i {
+            color: var(--success-green);
+            font-size: 1rem;
+        }
+
+        /* Tools Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .tool-category {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s ease;
+        }
+        .tool-category:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+        .tool-category h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+        .tool-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .tool-logo i {
+            font-size: 2rem;
+            color: var(--text-gray);
+            transition: color 0.3s ease;
+        }
+        .tool-logo:hover i {
+            color: var(--accent-pink);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 100px 0;
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+        .benefits-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .benefits-text h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .benefit-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .benefit-item h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .benefit-item p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* Pricing Section (using main page classes) */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .pricing-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-gray);
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .pricing-card.popular {
+            border-color: var(--accent-pink);
+            transform: scale(1.02);
+        }
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--brand-gradient);
+            color: var(--white);
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .plan-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.8rem;
+        }
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+        }
+        .plan-period {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            text-align: left;
+            padding: 0;
+        }
+        .plan-features li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--border-gray);
+        }
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        .plan-features i {
+            color: var(--success-green);
+            font-size: 1rem;
+            width: 16px;
+        }
+        .plan-btn {
+            background: var(--brand-gradient);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .plan-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+            color: var(--white);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #111;
+            color: #eee;
+            font-family: 'Inter', sans-serif;
+            padding: 60px 0 40px;
+        }
+
+        footer a {
+            color: #eee;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #FF1493;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            color: #FFFFFF;
+            font-size: 1.4rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: #FF1493;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        .address-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .india-flag {
+            width: 24px;
+            height: 16px;
+            margin-right: 10px;
+            border-radius: 3px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .address-header {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #FF1493;
+            font-size: 1.1rem;
+        }
+
+        .map-link {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #FF1493, #0A1628);
+            color: #FFFFFF;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 30px;
+            transition: 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(255, 20, 147, 0.4);
+            font-size: 0.9rem;
+        }
+
+        .map-link:hover {
+            background: linear-gradient(135deg, #FF1493, #FF6B9D);
+            color: white;
+            box-shadow: 0 8px 16px rgba(255, 20, 147, 0.6);
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #FF1493, #0A1628);
+            border-color: #FF1493;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+        }
+
+        .social-links i {
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 91px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem 0;
+                box-shadow: var(--shadow-medium);
+                transform: translateY(-150%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                border-top: 1px solid var(--border-gray);
+            }
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            .nav-menu li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: var(--light-gray);
+                margin-top: 0.5rem;
+                padding: 0.5rem 0;
+                display: none;
+            }
+            .nav-item.mobile-dropdown-active .dropdown-menu {
+                display: block;
+            }
+            .dropdown-menu a {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+            .hero-content, .benefits-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text h1, .benefits-text h2 {
+                font-size: 2.5rem;
+            }
+            .devops-pipeline {
+                margin-top: 3rem;
+            }
+            .pipeline-flow {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .pipeline-arrow {
+                transform: rotate(90deg);
+            }
+            .devops-stats, .benefits-grid, .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            .pricing-card.popular {
+                transform: none;
+            }
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .value-prop, .services, .pricing, .process, .contact, .tools-section, .benefits-section, .cta-section {
+                 padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+             .container {
+                padding: 0 16px;
+            }
+            .hero {
+                padding: 140px 0 100px;
+            }
+            .hero-text h1, .benefits-text h2 {
+                font-size: 2rem;
+            }
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+            .devops-stats {
+                grid-template-columns: 1fr;
+            }
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-glass">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#home">
-        <img src="/logo.png" alt="Logo" style="height: 40px;" />
-        Cloudrigade
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarBest" aria-controls="navbarBest" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  </nav>
+    <header>
+        <div class="container">
+            <nav class="nav-container">
+                <a href="index.html" class="logo-container">
+                    <img src="logo.png" alt="Cloudrigade Technologies Logo" class="custom-logo">
+                    <div class="logo-text-container">
+                        <div class="logo-text">CLOUDRIGADE</div>
+                        <div class="logo-tagline">WHERE CLOUD MEETS CONFIDENCE</div>
+                    </div>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li class="nav-item">
+                        <a href="index.html#services">Services <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="index.html#services">Cloud Migration & Management</a>
+                            <a href="index.html#services">Cybersecurity Solutions</a>
+                            <a href="devops.html">DevOps & Automation</a>
+                            <a href="index.html#services">Data Analytics & AI</a>
+                            <a href="index.html#services">Digital Transformation</a>
+                            <a href="index.html#services">24/7 IT Support</a>
+                            <a href="index.html#services" class="coming-soon">🎮 Management Games (Coming Soon)</a>
+                            <a href="index.html#services" class="coming-soon">🤖 AION Software Suite (Coming Soon)</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html#contact" class="cta-button">Get Free Assessment</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
 
-   <!-- Main Case Study Content -->
-  <main>
-    <div class="glass">
-      <h1 class="text-teal fw-bold mb-3">DevOps Automation for Fintech</h1>
-      <p>
-        We helped a high-growth fintech startup accelerate its deployments through complete DevOps automation.
-      </p>
-
-      <h4 class="mt-4 fw-semibold text-center">Client Background</h4>
-      <p>A fintech company offering digital payments and credit solutions with rapid user growth.</p>
-
-      <h4 class="mt-4 fw-semibold">Challenges</h4>
-      <ul>
-        <li>Manual deployment delays</li>
-        <li>Lack of version control across environments</li>
-        <li>Downtime during code merges</li>
-
-      </ul>
-
-      <h4 class="mt-4 fw-semibold">Solutions</h4>
-      <ul>
-         <li>CI/CD pipelines with GitHub Actions</li>
-        <li>Dockerized environments and Kubernetes orchestration</li>
-        <li>Monitoring with Prometheus and Grafana</li>
-      </ul>
-
-      <h4 class="mt-4 fw-semibold">Results</h4>
-      <ul>
-       <li>Deployment time reduced by 70%</li>
-        <li>Fewer production incidents</li>
-        <li>Stable rollback and zero-downtime deployments</li>
-      </ul>
-    </div>
-
-   <div class="text-center my-5">
-      <a href="index.html#case-studies" class="btn btn-outline-secondary">← Back to Home</a>
-    </div>
-  </main>
-  <!-- Footer -->
-  <footer class="pt-5 pb-4">
-    <div class="container">
-      <div class="row g-4">
-        <!-- Brand Info -->
-        <div class="col-lg-4 col-md-6">
-          <h4 class="fw-bold mb-3 text-teal">Cloudrigade</h4>
-          <p>Empowering businesses with tailored IT solutions, secure infrastructure, and innovative digital strategies.</p>
-
-          <div class="address-box">
-            <div class="address-header">
-              <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" class="india-flag" alt="India Flag" />
-              India Branch:
+    <section class="hero" id="devops-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>DevOps & Automation</h1>
+                    <p>Streamline your development pipeline with CI/CD implementation, infrastructure as code, and automated testing frameworks that accelerate delivery and improve quality.</p>
+                    <div class="hero-buttons">
+                         <a href="index.html#contact" class="btn-primary">Start DevOps Transformation</a>
+                    </div>
+                </div>
+                <div class="devops-pipeline">
+                    <div class="pipeline-flow">
+                        <div class="pipeline-step">
+                            <i class="fas fa-code"></i>
+                            <div>Code</div>
+                        </div>
+                        <div class="pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="pipeline-step">
+                            <i class="fas fa-cogs"></i>
+                            <div>Build</div>
+                        </div>
+                        <div class="pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="pipeline-step">
+                            <i class="fas fa-vial"></i>
+                            <div>Test</div>
+                        </div>
+                        <div class="pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="pipeline-step">
+                            <i class="fas fa-rocket"></i>
+                            <div>Deploy</div>
+                        </div>
+                    </div>
+                    <div class="devops-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">80%</div>
+                            <div class="stat-label">Faster Deployments</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Reduced Errors</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">60%</div>
+                            <div class="stat-label">Time Saved</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-              C/O ASHOK, SRIRAMPANDITH 269<br />
-              ADDIGANAHALLI, Yelahanka Rajanakunte,<br />
-              Bangalore North - 560064, Karnataka India
+        </div>
+    </section>
+
+    <section class="services" id="devops-services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive DevOps Solutions</h2>
+                <p>Transform your software delivery with our end-to-end DevOps and automation services</p>
             </div>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=13.17294227119414,77.5670985301588" target="_blank" class="map-link mt-2">
-              🚗 <strong>Get Directions</strong>
-            </a>
-          </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon devops-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>CI/CD Pipeline Implementation</h3>
+                    <p>Automated continuous integration and deployment pipelines that enable rapid, reliable software delivery.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Automated Build & Testing</li>
+                        <li><i class="fas fa-check"></i> Multi-Environment Deployments</li>
+                        <li><i class="fas fa-check"></i> Rollback Capabilities</li>
+                        <li><i class="fas fa-check"></i> Quality Gates & Approvals</li>
+                    </ul>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon devops-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Infrastructure as Code (IaC)</h3>
+                    <p>Manage and provision infrastructure through machine-readable definition files for consistent environments.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Terraform & CloudFormation</li>
+                        <li><i class="fas fa-check"></i> Version-Controlled Infrastructure</li>
+                        <li><i class="fas fa-check"></i> Automated Provisioning</li>
+                        <li><i class="fas fa-check"></i> Environment Consistency</li>
+                    </ul>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon devops-icon">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <h3>Containerization & Orchestration</h3>
+                    <p>Docker and Kubernetes implementation for scalable, portable application deployment and management.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Docker Containerization</li>
+                        <li><i class="fas fa-check"></i> Kubernetes Orchestration</li>
+                        <li><i class="fas fa-check"></i> Auto-scaling & Load Balancing</li>
+                        <li><i class="fas fa-check"></i> Service Mesh Implementation</li>
+                    </ul>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon devops-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Monitoring & Observability</h3>
+                    <p>Comprehensive monitoring solutions with real-time alerts and performance insights for proactive management.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Application Performance Monitoring</li>
+                        <li><i class="fas fa-check"></i> Log Aggregation & Analysis</li>
+                        <li><i class="fas fa-check"></i> Real-time Alerting</li>
+                        <li><i class="fas fa-check"></i> Custom Dashboards</li>
+                    </ul>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon devops-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Test Automation</h3>
+                    <p>Automated testing frameworks that ensure code quality and reduce manual testing efforts.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Unit & Integration Testing</li>
+                        <li><i class="fas fa-check"></i> End-to-End Testing</li>
+                        <li><i class="fas fa-check"></i> Performance Testing</li>
+                        <li><i class="fas fa-check"></i> Security Testing</li>
+                    </ul>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon devops-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>DevSecOps Integration</h3>
+                    <p>Security integrated throughout the development lifecycle with automated security testing and compliance.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Security Scanning in CI/CD</li>
+                        <li><i class="fas fa-check"></i> Vulnerability Assessment</li>
+                        <li><i class="fas fa-check"></i> Compliance Automation</li>
+                        <li><i class="fas fa-check"></i> Secrets Management</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Quick Links -->
-        <div class="col-lg-2 col-md-6">
-          <h6 class="text-teal fw-semibold mb-3">Quick Links</h6>
-          <ul class="list-unstyled">
-            <li><a href="/">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-          </ul>
+    <section class="tools-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>DevOps Tools & Technologies</h2>
+                <p>We leverage the best-in-class tools to build robust and scalable DevOps pipelines</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-category fade-in">
+                    <h4>Version Control</h4>
+                    <div class="tool-logos">
+                        <span class="tool-logo"><i class="fab fa-git-alt"></i></span>
+                        <span class="tool-logo"><i class="fab fa-github"></i></span>
+                        <span class="tool-logo"><i class="fab fa-gitlab"></i></span>
+                        <span class="tool-logo"><i class="fab fa-bitbucket"></i></span>
+                    </div>
+                </div>
+                <div class="tool-category fade-in">
+                    <h4>CI/CD</h4>
+                    <div class="tool-logos">
+                        <span class="tool-logo"><i class="fab fa-jenkins"></i></span>
+                        <span class="tool-logo"><i class="fab fa-gitlab"></i></span>
+                        <span class="tool-logo"><i class="fab fa-github"></i></span>
+                        <span class="tool-logo"><i class="fas fa-cogs"></i></span> </div>
+                </div>
+                <div class="tool-category fade-in">
+                    <h4>Containerization</h4>
+                    <div class="tool-logos">
+                        <span class="tool-logo"><i class="fab fa-docker"></i></span>
+                        <span class="tool-logo"><i class="fas fa-dharmachakra"></i></span> <span class="tool-logo"><i class="fab fa-aws"></i></span> <span class="tool-logo"><i class="fab fa-google"></i></span> </div>
+                </div>
+                <div class="tool-category fade-in">
+                    <h4>Infrastructure</h4>
+                    <div class="tool-logos">
+                       <span class="tool-logo"><i class="fas fa-server"></i></span> <span class="tool-logo"><i class="fab fa-redhat"></i></span> <span class="tool-logo"><i class="fab fa-aws"></i></span> <span class="tool-logo"><i class="fab fa-microsoft"></i></span> </div>
+                </div>
+                <div class="tool-category fade-in">
+                    <h4>Monitoring</h4>
+                    <div class="tool-logos">
+                         <span class="tool-logo"><i class="fas fa-fire"></i></span> <span class="tool-logo"><i class="fas fa-chart-bar"></i></span> <span class="tool-logo"><i class="fas fa-search"></i></span> <span class="tool-logo"><i class="fas fa-heartbeat"></i></span> </div>
+                </div>
+                <div class="tool-category fade-in">
+                    <h4>Configuration</h4>
+                    <div class="tool-logos">
+                        <span class="tool-logo"><i class="fab fa-redhat"></i></span> <span class="tool-logo"><i class="fas fa-utensils"></i></span> <span class="tool-logo"><i class="fas fa-theater-masks"></i></span> <span class="tool-logo"><i class="fas fa-cog"></i></span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Services -->
-        <div class="col-lg-3 col-md-6">
-          <h6 class="text-teal fw-semibold mb-3">Our Services</h6>
-          <ul class="list-unstyled">
-            <li><a href="it-managed.html">IT Managed Services</a></li>
-          <li><a href="software-development.html">Software Development & Maintenance</a></li>
-          <li><a href="cloud-solutions.html">Cloud Computing & SaaS Solutions</a></li>
-          <li><a href="consulting.html">IT Consultancy & Digital Transformation</a></li>
-          <li><a href="cybersecurity.html">Cybersecurity & Data Protection</a></li>
-          <li><a href="Enabled.html">IT-Enabled Services (ITES)</a></li>
-          </ul>
+    <section class="benefits-section">
+        <div class="container">
+            <div class="benefits-content">
+                <div class="benefits-text fade-in">
+                    <h2>DevOps Transformation Benefits</h2>
+                    <p>Experience the power of DevOps with measurable improvements in development velocity, quality, and operational efficiency. Our proven methodology has helped 200+ companies accelerate their software delivery while maintaining high quality and security standards.</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-item fade-in">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h4>Faster Time to Market</h4>
+                        <p>Reduce deployment time from weeks to minutes</p>
+                    </div>
+                    <div class="benefit-item fade-in">
+                        <i class="fas fa-bug"></i>
+                        <h4>Improved Quality</h4>
+                        <p>95% reduction in production bugs</p>
+                    </div>
+                    <div class="benefit-item fade-in">
+                        <i class="fas fa-users"></i>
+                        <h4>Better Collaboration</h4>
+                        <p>Enhanced team productivity and communication</p>
+                    </div>
+                    <div class="benefit-item fade-in">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h4>Cost Optimization</h4>
+                        <p>40% reduction in operational costs</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Contact -->
-        <div class="col-lg-3 col-md-6">
-          <h6 class="text-teal fw-semibold mb-3">Contact</h6>
-          <p>Email:info@cloudrigade.com</p>
-          <p>Phone: +91 98765 43210</p>
-         <p>Follow us on social media or reach out via WhatsApp for any inquiries.</p>
-        <ul class="d-flex gap-3 list-unstyled mb-3">
-          <li><a href="https://www.facebook.com/yourprofile" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-          <li><a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="https://www.linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
-          <li><a href="https://cloudrigade.hi.link" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
-          <li><a href="https://wa.me/919876543210" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
-        </ul>
-      </div>
-    </div>
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>DevOps Transformation Packages</h2>
+                <p>Choose the DevOps package that accelerates your development and deployment processes</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <div class="plan-name">DevOps Starter</div>
+                    <div class="plan-price">₹45K</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                         <li><i class="fas fa-check"></i>Basic CI/CD Pipeline Setup</li>
+                         <li><i class="fas fa-check"></i>Source Code Management</li>
+                         <li><i class="fas fa-check"></i>Automated Testing Integration</li>
+                         <li><i class="fas fa-check"></i>Basic Monitoring & Alerts</li>
+                         <li><i class="fas fa-check"></i>Documentation & Training</li>
+                         <li><i class="fas fa-check"></i>Up to 3 Applications</li>
+                    </ul>
+                    <a href="index.html#contact" class="plan-btn">Get Started</a>
+                </div>
+                <div class="pricing-card popular fade-in">
+                    <div class="plan-name">DevOps Professional</div>
+                    <div class="plan-price">₹95K</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i>Advanced CI/CD with Multi-Stage</li>
+                        <li><i class="fas fa-check"></i>Infrastructure as Code (IaC)</li>
+                        <li><i class="fas fa-check"></i>Container Orchestration</li>
+                        <li><i class="fas fa-check"></i>Comprehensive Monitoring</li>
+                        <li><i class="fas fa-check"></i>Security Integration (DevSecOps)</li>
+                        <li><i class="fas fa-check"></i>Performance Optimization</li>
+                        <li><i class="fas fa-check"></i>Up to 10 Applications</li>
+                    </ul>
+                    <a href="index.html#contact" class="plan-btn">Choose Plan</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <div class="plan-name">Enterprise DevOps</div>
+                    <div class="plan-price">Custom</div>
+                    <div class="plan-period">Tailored Pricing</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i>Complete DevOps Transformation</li>
+                        <li><i class="fas fa-check"></i>Multi-Cloud Infrastructure</li>
+                        <li><i class="fas fa-check"></i>Advanced Automation & AI/ML</li>
+                        <li><i class="fas fa-check"></i>24/7 DevOps Support Team</li>
+                        <li><i class="fas fa-check"></i>Custom Tool Integration</li>
+                        <li><i class="fas fa-check"></i>Dedicated DevOps Engineer</li>
+                        <li><i class="fas fa-check"></i>Unlimited Applications</li>
+                    </ul>
+                     <a href="index.html#contact" class="plan-btn secondary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <hr class="my-4 footer-divider" />
+    <section class="cta-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ready to Accelerate Your Development?</h2>
+                <p>Transform your software delivery with our proven DevOps methodology and start deploying faster, safer, and more frequently.</p>
+                <a href="index.html#contact" class="btn-primary" style="margin-top: 2rem;">Start DevOps Assessment</a>
+            </div>
+        </div>
+    </section>
 
-    <div class="text-center pb-3" style="color: #bbb;">
-      <small>© 2025 Cloudrigade Technologies Pvt. Ltd. All rights reserved.</small>
-    </div>
-  </div>
-  </footer>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cloudrigade Technologies</h3>
+                    <p>Empowering businesses across India with cutting-edge cloud solutions and digital transformation services. Where cloud meets confidence.</p>
+                    
+                    <div class="address-box">
+                        <div class="address-header">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" class="india-flag" alt="India Flag" />
+                            India Headquarters:
+                        </div>
+                        <div>
+                            C/O ASHOK, SRIRAMPANDITH 269<br />
+                            ADDIGANAHALLI, Yelahanka Rajanakunte,<br />
+                            Bangalore North - 560064, Karnataka, India
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=13.17294227119414,77.5670985301588" target="_blank" class="map-link">
+                            🚗 <strong>Get Directions</strong>
+                        </a>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/cloudrigade" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com/cloudrigade" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/cloudrigade" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/cloudrigade" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919876543210" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@cloudrigade" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
 
-  <!-- WhatsApp Chat Widget -->
-<script>
-  (function () {
-    const options = {
-      whatsapp: "+919876543210",
-      call_to_action: "Message us",
-      position: "right",
-    };
-    const proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
-    const s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-    s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-    const x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-  })();
-</script>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="index.html#services">Cloud Migration & Management</a></li>
+                        <li><a href="index.html#services">Cybersecurity Solutions</a></li>
+                        <li><a href="devops.html">DevOps & Automation</a></li>
+                        <li><a href="index.html#services">Data Analytics & AI</a></li>
+                        <li><a href="index.html#services">Digital Transformation</a></li>
+                        <li><a href="index.html#services">24/7 IT Support</a></li>
+                        <li><a href="index.html#services">Management Games (Soon)</a></li>
+                        <li><a href="index.html#services">AION Software Suite (Soon)</a></li>
+                    </ul>
+                </div>
 
-  <!-- Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+                    <p><strong>Email:</strong> info@cloudrigade.com</p>
+                    <p><strong>Sales:</strong> sales@cloudrigade.com</p>
+                    <p><strong>Support:</strong> support@cloudrigade.com</p>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.8rem; color: #FF1493;">Business Hours</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.4rem;">Monday - Friday: 9:00 AM - 7:00 PM</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.4rem;">Saturday: 10:00 AM - 4:00 PM</p>
+                        <p style="font-size: 0.9rem; color: #FF1493; font-weight: 600;">24/7 Emergency Support Available</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Cloudrigade Technologies Pvt. Ltd. All rights reserved. | CIN: U72900KA2020PTC135678 | Designed with ❤️ in India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const options = {
+                whatsapp: "+919876543210",
+                call_to_action: "Message us",
+                position: "right",
+            };
+            const proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+            const s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            const x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+
+    <script>
+        // Mobile menu toggle with dropdown support
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        const header = document.querySelector('header');
+
+        mobileToggle.addEventListener('click', () => {
+            const isMenuOpen = navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.classList.toggle('fa-bars', !isMenuOpen);
+            icon.classList.toggle('fa-times', isMenuOpen);
+
+            if (isMenuOpen) {
+                const headerHeight = header.offsetHeight;
+                navMenu.style.top = `${headerHeight}px`;
+            }
+        });
+
+        // Mobile dropdown toggle
+        document.querySelectorAll('.nav-item').forEach(item => {
+            const link = item.querySelector('a');
+            const dropdown = item.querySelector('.dropdown-menu');
+
+            if (dropdown) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        // Prevent default anchor behavior only for the main services link on mobile
+                        // to allow the dropdown to open without jumping to the section.
+                        if (link.getAttribute('href') === 'index.html#services') {
+                            e.preventDefault();
+                        }
+                        item.classList.toggle('mobile-dropdown-active');
+                    }
+                });
+            }
+        });
+        
+        // Close menu on link click (for both full URLs and anchors)
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    const icon = mobileToggle.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
+            } else {
+                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
 </body>
 </html>
