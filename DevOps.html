@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps & Automation Services - Cloudrigade Technologies</title>
+    <meta name="description" content="Streamline your development pipeline with CI/CD implementation, infrastructure as code, and automated testing frameworks.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1B2951;
+            --secondary-blue: #2B3E75;
+            --accent-pink: #E91E63;
+            --accent-gradient: linear-gradient(135deg, #E91E63, #FF6B9D);
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-gray: #6C757D;
+            --border-gray: #E9ECEF;
+            --success-green: #28a745;
+            --devops-orange: #ff6b35;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-blue);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 30px rgba(27, 41, 81, 0.15);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .logo-tagline {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            margin-top: -5px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-pink);
+        }
+
+        .cta-button {
+            background: var(--accent-gradient);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 30, 99, 0.4);
+        }
+
+        /* Service Hero Section */
+        .service-hero {
+            background: linear-gradient(135deg, 
+                rgba(27, 41, 81, 0.95) 0%, 
+                rgba(43, 62, 117, 0.95) 50%, 
+                rgba(233, 30, 99, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 140px 0 100px;
+            position: relative;
+        }
+
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.5);
+        }
+
+        .devops-pipeline {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .pipeline-flow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pipeline-step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 120px;
+        }
+
+        .pipeline-step i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pipeline-arrow {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.5rem;
+        }
+
+        .devops-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* DevOps Services Section */
+        .devops-services {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid var(--devops-orange);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--devops-orange), #ff8f65);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .service-features i {
+            color: var(--success-green);
+            font-size: 1rem;
+        }
+
+        /* Tools & Technologies */
+        .tools-section {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tool-category {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tool-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .tool-category h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .tool-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tool-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool-logo:hover {
+            background: var(--accent-gradient);
+            transform: scale(1.1);
+        }
+
+        .tool-logo i {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+        }
+
+        .tool-logo:hover i {
+            color: var(--white);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 100px 0;
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .benefits-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .benefits-text h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .benefit-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .benefit-item h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-item p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid var(--border-gray);
+            border-radius: 25px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-pink);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-gradient);
+            color: var(--white);
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-period {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-check {
+            color: var(--success-green);
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--light-gray);
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-pink);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content,
+            .benefits-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .pipeline-flow {
+                flex-direction: column;
+            }
+
+            .pipeline-arrow {
+                transform: rotate(90deg);
+            }
+
+            .devops-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="nav-container">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#E91E63;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FF6B9D;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M75 35c8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15H25c-8.284 0-15-6.716-15-15s6.716-15 15-15c0-11.046 8.954-20 20-20s20 8.954 20 20c5.523 0 10 4.477 10 10z" fill="url(#cloudGradient)" opacity="0.9"/>
+                            <path d="M45 25c-8.284 0-15 6.716-15 15 0 2.5.5 4.9 1.4 7.1C33.6 45.6 35.7 44 38.2 44h31.6c6.6 0 12-5.4 12-12s-5.4-12-12-12c-1.3 0-2.5.2-3.7.6C63.2 15.2 56.8 10 49 10c-7.8 0-14.2 5.2-17.1 12.4C30.6 23.2 29.4 24 28 24c-3.3 0-6 2.7-6 6s2.7 6 6 6h11c2.8-7.2 9.8-12 18-12z" fill="rgba(255,255,255,0.3)"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <a href="index.html" class="logo-text">CLOUDRIGADE</a>
+                        <div class="logo-tagline">WHERE CLOUD MEETS CONFIDENCE</div>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html#contact" class="cta-button">Get Free Assessment</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Service Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>DevOps & Automation</h1>
+                    <p>Streamline your development pipeline with CI/CD implementation, infrastructure as code, and automated testing frameworks that accelerate delivery and improve quality.</p>
+                    <a href="#contact" class="btn-primary">Start DevOps Transformation</a>
+                </div>
+                <div class="devops-pipeline">
+                    <div class="pipeline-flow">
+                        <div class="pipeline-step">
+                            <i class="fas fa-code"></i>
+                            <div>Code</div>
+                        </div>
+                        <div class="pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="pipeline-step">
+                            <i class="fas fa-cogs"></i>
+                            <div>Build</div>
+                        </div>
+                        <div class="pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="pipeline-step">
+                            <i class="fas fa-vial"></i>
+                            <div>Test</div>
+                        </div>
+                        <div class="pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="pipeline-step">
+                            <i class="fas fa-rocket"></i>
+                            <div>Deploy</div>
+                        </div>
+                    </div>
+                    <div class="devops-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">80%</div>
+                            <div class="stat-label">Faster Deployments</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Reduced Errors</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">60%</div>
+                            <div class="stat-label">Time Saved</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DevOps Services Section -->
+    <section class="devops-services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive DevOps Solutions</h2>
+                <p>Transform your software delivery with our end-to-end DevOps and automation services</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>CI/CD Pipeline Implementation</h3>
+                    <p>Automated continuous integration and deployment pipelines that enable rapid, reliable software delivery.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Automated Build & Testing</li>
+                        <li><i class="fas fa-check"></i> Multi-Environment Deployments</li>
+                        <li><i class="fas fa-check"></i> Rollback Capabilities</li>
+                        <li><i class="fas fa-check"></i> Quality Gates & Approvals</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Infrastructure as Code (IaC)</h3>
+                    <p>Manage and provision infrastructure through machine-readable definition files for consistent environments.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Terraform & CloudFormation</li>
+                        <li><i class="fas fa-check"></i> Version-Controlled Infrastructure</li>
+                        <li><i class="fas fa-check"></i> Automated Provisioning</li>
+                        <li><i class="fas fa-check"></i> Environment Consistency</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <h3>Containerization & Orchestration</h3>
+                    <p>Docker and Kubernetes implementation for scalable, portable application deployment and management.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Docker Containerization</li>
+                        <li><i class="fas fa-check"></i> Kubernetes Orchestration</li>
+                        <li><i class="fas fa-check"></i> Auto-scaling & Load Balancing</li>
+                        <li><i class="fas fa-check"></i> Service Mesh Implementation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Monitoring & Observability</h3>
+                    <p>Comprehensive monitoring solutions with real-time alerts and performance insights for proactive management.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Application Performance Monitoring</li>
+                        <li><i class="fas fa-check"></i> Log Aggregation & Analysis</li>
+                        <li><i class="fas fa-check"></i> Real-time Alerting</li>
+                        <li><i class="fas fa-check"></i> Custom Dashboards</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Test Automation</h3>
+                    <p>Automated testing frameworks that ensure code quality and reduce manual testing efforts.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Unit & Integration Testing</li>
+                        <li><i class="fas fa-check"></i> End-to-End Testing</li>
+                        <li><i class="fas fa-check"></i> Performance Testing</li>
+                        <li><i class="fas fa-check"></i> Security Testing</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>DevSecOps Integration</h3>
+                    <p>Security integrated throughout the development lifecycle with automated security testing and compliance.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Security Scanning in CI/CD</li>
+                        <li><i class="fas fa-check"></i> Vulnerability Assessment</li>
+                        <li><i class="fas fa-check"></i> Compliance Automation</li>
+                        <li><i class="fas fa-check"></i> Secrets Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools & Technologies -->
+    <section class="tools-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>DevOps Tools & Technologies</h2>
+                <p>We leverage the best-in-class tools to build robust and scalable DevOps pipelines</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-category">
+                    <h4>Version Control</h4>
+                    <div class="tool-logos">
+                        <div class="tool-logo"><i class="fab fa-git-alt"></i></div>
+                        <div class="tool-logo"><i class="fab fa-github"></i></div>
+                        <div class="tool-logo"><i class="fab fa-gitlab"></i></div>
+                        <div class="tool-logo"><i class="fas fa-code-branch"></i></div>
+                    </div>
+                </div>
+                <div class="tool-category">
+                    <h4>CI/CD</h4>
+                    <div class="tool-logos">
+                        <div class="tool-logo"><i class="fab fa-jenkins"></i></div>
+                        <div class="tool-logo"><i class="fas fa-rocket"></i></div>
+                        <div class="tool-logo"><i class="fas fa-play-circle"></i></div>
+                        <div class="tool-logo"><i class="fas fa-cogs"></i></div>
+                    </div>
+                </div>
+                <div class="tool-category">
+                    <h4>Containerization</h4>
+                    <div class="tool-logos">
+                        <div class="tool-logo"><i class="fab fa-docker"></i></div>
+                        <div class="tool-logo"><i class="fas fa-dharmachakra"></i></div>
+                        <div class="tool-logo"><i class="fas fa-cube"></i></div>
+                        <div class="tool-logo"><i class="fas fa-cubes"></i></div>
+                    </div>
+                </div>
+                <div class="tool-category">
+                    <h4>Infrastructure</h4>
+                    <div class="tool-logos">
+                        <div class="tool-logo"><i class="fab fa-aws"></i></div>
+                        <div class="tool-logo"><i class="fab fa-microsoft"></i></div>
+                        <div class="tool-logo"><i class="fab fa-google"></i></div>
+                        <div class="tool-logo"><i class="fas fa-server"></i></div>
+                    </div>
+                </div>
+                <div class="tool-category">
+                    <h4>Monitoring</h4>
+                    <div class="tool-logos">
+                        <div class="tool-logo"><i class="fas fa-chart-bar"></i></div>
+                        <div class="tool-logo"><i class="fas fa-search"></i></div>
+                        <div class="tool-logo"><i class="fas fa-eye"></i></div>
+                        <div class="tool-logo"><i class="fas fa-heartbeat"></i></div>
+                    </div>
+                </div>
+                <div class="tool-category">
+                    <h4>Configuration</h4>
+                    <div class="tool-logos">
+                        <div class="tool-logo"><i class="fas fa-hammer"></i></div>
+                        <div class="tool-logo"><i class="fas fa-tools"></i></div>
+                        <div class="tool-logo"><i class="fas fa-wrench"></i></div>
+                        <div class="tool-logo"><i class="fas fa-cog"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="benefits-content">
+                <div class="benefits-text">
+                    <h2>DevOps Transformation Benefits</h2>
+                    <p>Experience the power of DevOps with measurable improvements in development velocity, quality, and operational efficiency.</p>
+                    <p>Our proven methodology has helped 200+ companies accelerate their software delivery while maintaining high quality and security standards.</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h4>Faster Time to Market</h4>
+                        <p>Reduce deployment time from weeks to minutes</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-bug"></i>
+                        <h4>Improved Quality</h4>
+                        <p>95% reduction in production bugs</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-users"></i>
+                        <h4>Better Collaboration</h4>
+                        <p>Enhanced team productivity and communication</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h4>Cost Optimization</h4>
+                        <p>40% reduction in operational costs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>DevOps Transformation Packages</h2>
+                <p>Choose the DevOps package that accelerates your development and deployment processes</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-name">DevOps Starter</div>
+                    <div class="plan-price">₹45,000</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li>Basic CI/CD Pipeline Setup <span class="feature-check">✓</span></li>
+                        <li>Source Code Management <span class="feature-check">✓</span></li>
+                        <li>Automated Testing Integration <span class="feature-check">✓</span></li>
+                        <li>Basic Monitoring & Alerts <span class="feature-check">✓</span></li>
+                        <li>Documentation & Training <span class="feature-check">✓</span></li>
+                        <li>Up to 3 Applications <span class="feature-check">✓</span></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="plan-name">DevOps Professional</div>
+                    <div class="plan-price">₹95,000</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li>Advanced CI/CD with Multi-Stage <span class="feature-check">✓</span></li>
+                        <li>Infrastructure as Code (IaC) <span class="feature-check">✓</span></li>
+                        <li>Container Orchestration <span class="feature-check">✓</span></li>
+                        <li>Comprehensive Monitoring <span class="feature-check">✓</span></li>
+                        <li>Security Integration (DevSecOps) <span class="feature-check">✓</span></li>
+                        <li>Performance Optimization <span class="feature-check">✓</span></li>
+                        <li>Up to 10 Applications <span class="feature-check">✓</span></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="plan-name">Enterprise DevOps</div>
+                    <div class="plan-price">₹2,25,000</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li>Complete DevOps Transformation <span class="feature-check">✓</span></li>
+                        <li>Multi-Cloud Infrastructure <span class="feature-check">✓</span></li>
+                        <li>Advanced Automation & AI/ML <span class="feature-check">✓</span></li>
+                        <li>24/7 DevOps Support Team <span class="feature-check">✓</span></li>
+                        <li>Custom Tool Integration <span class="feature-check">✓</span></li>
+                        <li>Dedicated DevOps Engineer <span class="feature-check">✓</span></li>
+                        <li>Unlimited Applications <span class="feature-check">✓</span></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-primary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Accelerate Your Development?</h2>
+                <p>Transform your software delivery with our proven DevOps methodology and start deploying faster, safer, and more frequently.</p>
+                <a href="index.html#contact" class="btn-primary">Start DevOps Assessment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cloudrigade Technologies</h3>
+                    <p>Empowering businesses across India with cutting-edge cloud solutions and digital transformation services.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="cloud-migration.html">Cloud Migration</a></li>
+                        <li><a href="cybersecurity.html">Cybersecurity</a></li>
+                        <li><a href="devops.html">DevOps & Automation</a></li>
+                        <li><a href="data-analytics.html">Data Analytics</a></li>
+                        <li><a href="digital-transformation.html">Digital Transformation</a></li>
+                        <li><a href="it-support.html">24/7 Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Phone: +91 80-4567-8901</li>
+                        <li>Email: info@cloudrigade.tech</li>
+                        <li>Address: Brigade Road, Bangalore</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cloudrigade Technologies Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(27, 41, 81, 0.2)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 30px rgba(27, 41, 81, 0.15)';
+            }
+        });
+    </script>
+</body>
+</html>

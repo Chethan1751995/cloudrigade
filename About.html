@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Cloudrigade Technologies | Where Innovation Meets Excellence</title>
+    <meta name="description" content="Discover the story behind Cloudrigade Technologies. 30+ years of innovation, cutting-edge solutions, and unwavering commitment to transforming businesses through technology.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1B2951;
+            --secondary-blue: #2B3E75;
+            --accent-pink: #FF1493;
+            --bright-blue: #00BFFF;
+            --brand-gradient: linear-gradient(135deg, #FF1493, #00BFFF);
+            --accent-gradient: linear-gradient(135deg, #FF1493, #FF6B9D);
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-gray: #6C757D;
+            --border-gray: #E9ECEF;
+            --success-green: #28a745;
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-heavy: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-blue);
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1px;
+        }
+
+        .custom-logo {
+            height: 75px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .logo-tagline {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--accent-pink);
+        }
+
+        /* Services Dropdown */
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 280px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border-gray);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--light-gray);
+            color: var(--accent-pink);
+            border-left-color: var(--accent-pink);
+        }
+
+        .dropdown-menu .coming-soon {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .dropdown-menu .coming-soon:hover {
+            color: var(--accent-pink);
+            opacity: 1;
+        }
+
+        .cta-button {
+            background: var(--brand-gradient);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 20, 147, 0.3);
+            white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 20, 147, 0.4);
+            color: var(--white);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(135deg,
+                rgba(27, 41, 81, 0.95) 0%,
+                rgba(43, 62, 117, 0.95) 50%,
+                rgba(233, 30, 99, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            padding: 180px 0 120px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 90px;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .story-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .story-text h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--primary-blue);
+            line-height: 1.2;
+        }
+
+        .story-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .story-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .story-image {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-heavy);
+            bottom: -30px;
+            right: -30px;
+            max-width: 250px;
+        }
+
+        .floating-card h4 {
+            color: var(--accent-pink);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .floating-card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        /* Mission Vision Values */
+        .mvv-section {
+            padding: 120px 0;
+            background: var(--light-gray);
+        }
+
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            align-items: stretch; /* Ensures cards in a row have same height */
+        }
+
+        .mvv-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-gray);
+            position: relative;
+            overflow: hidden;
+            display: flex; /* Added for alignment */
+            flex-direction: column; /* Added for alignment */
+            justify-content: center; /* Added for alignment */
+        }
+
+        .mvv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--brand-gradient);
+        }
+
+        .mvv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .mvv-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--brand-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            flex-shrink: 0;
+        }
+
+        .mvv-icon i {
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .mvv-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .mvv-card p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: stretch; /* Ensures cards have same height */
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-gray);
+            display: flex; /* Added for alignment */
+            flex-direction: column; /* Added for alignment */
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 250px;
+            background: var(--brand-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .team-image i {
+            font-size: 4rem;
+            color: var(--white);
+        }
+
+        .team-info {
+            padding: 2rem;
+            text-align: center;
+            flex-grow: 1; /* Allows this section to grow */
+            display: flex; /* Added for alignment */
+            flex-direction: column; /* Added for alignment */
+            justify-content: center; /* Added for alignment */
+        }
+
+        .team-info h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .team-role {
+            color: var(--accent-pink);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-bio {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Expertise Section */
+        .expertise-section {
+            padding: 120px 0;
+            background: var(--light-gray);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .expertise-item {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-gray);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .expertise-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .expertise-item i {
+            font-size: 3rem;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-item h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .expertise-item p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        /* Innovation Lab Preview */
+        .innovation-section {
+            padding: 120px 0;
+            background: var(--light-gray);
+        }
+
+        .innovation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: stretch;
+        }
+
+        .innovation-card {
+            background: var(--white);
+            border-radius: 24px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-gray);
+            box-shadow: var(--shadow-medium);
+            padding: 3rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .innovation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .innovation-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .innovation-card:first-child .innovation-icon {
+            color: #ff6b35;
+        }
+
+        .innovation-card:last-child .innovation-icon {
+            color: #0066cc;
+        }
+
+        .innovation-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .innovation-card p {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+
+        .beta-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .beta-badge.games {
+            background: #ff6b35;
+        }
+
+        .beta-badge.ai {
+            background: #0066cc;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #111;
+            color: #eee;
+            font-family: 'Inter', sans-serif;
+            padding: 60px 0 40px;
+        }
+
+        footer a {
+            color: #eee;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #FF1493;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            color: #FFFFFF;
+            font-size: 1.4rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: #FF1493;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        .address-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .india-flag {
+            width: 24px;
+            height: 16px;
+            margin-right: 10px;
+            border-radius: 3px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .address-header {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #FF1493;
+            font-size: 1.1rem;
+        }
+
+        .map-link {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #FF1493, #0A1628);
+            color: #FFFFFF;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 30px;
+            transition: 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(255, 20, 147, 0.4);
+            font-size: 0.9rem;
+        }
+
+        .map-link:hover {
+            background: linear-gradient(135deg, #FF1493, #FF6B9D);
+            color: white;
+            box-shadow: 0 8px 16px rgba(255, 20, 147, 0.6);
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #FF1493, #0A1628);
+            border-color: #FF1493;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+        }
+
+        .social-links i {
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .story-content,
+            .mvv-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 91px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem 0;
+                box-shadow: var(--shadow-medium);
+                transform: translateY(-150%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                border-top: 1px solid var(--border-gray);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-menu li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Mobile Dropdown */
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: var(--light-gray);
+                margin-top: 0.5rem;
+                padding: 0.5rem 0;
+                display: none;
+            }
+
+            .nav-item.mobile-dropdown-active .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown-menu a {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .story-text h2 {
+                font-size: 2.2rem;
+            }
+
+            .floating-card {
+                position: static;
+                margin-top: 2rem;
+                max-width: none;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .about-hero {
+                padding: 140px 0 100px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .innovation-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .beta-badge {
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="nav-container">
+                <div class="logo-container">
+                    <img src="logo.png" alt="Cloudrigade Technologies Logo" class="custom-logo">
+                    <div class="logo-text-container">
+                        <div class="logo-text">CLOUDRIGADE</div>
+                        <div class="logo-tagline">WHERE CLOUD MEETS CONFIDENCE</div>
+                    </div>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="nav-item">
+                        <a href="index.html#services">Services <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="index.html#services">Cloud Migration & Management</a>
+                            <a href="index.html#services">Cybersecurity Solutions</a>
+                            <a href="index.html#services">DevOps & Automation</a>
+                            <a href="index.html#services">Data Analytics & AI</a>
+                            <a href="index.html#services">Digital Transformation</a>
+                            <a href="index.html#services">24/7 IT Support</a>
+                            <a href="index.html#services" class="coming-soon">🎮 Management Games (Coming Soon)</a>
+                            <a href="index.html#services" class="coming-soon">🤖 AION Software Suite (Coming Soon)</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html#contact" class="cta-button">Get Free Assessment</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Pioneering the Future of Technology</h1>
+                <p>For over three decades, Cloudrigade Technologies has been at the forefront of innovation, transforming businesses across India with cutting-edge solutions that bridge the gap between possibility and reality.</p>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Expert Team Members</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Our Journey of Innovation</h2>
+                    <p>Founded with a vision to democratize technology, Cloudrigade began as a small team of passionate engineers who believed that every business, regardless of size, deserved access to world-class IT solutions.</p>
+
+                    <p>What started as a local IT consultancy has evolved into a comprehensive technology powerhouse, serving manufacturing giants, emerging startups, and everything in between. Our journey has been marked by continuous learning, adaptation, and an unwavering commitment to our clients' success.</p>
+
+                    <p>Today, we stand as India's trusted technology partner, combining decades of experience with cutting-edge innovation to deliver solutions that don't just meet today's needs—they anticipate tomorrow's challenges.</p>
+                </div>
+                <div class="story-visual">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1126&q=80" alt="Our Innovation Journey" class="story-image">
+                    <div class="floating-card">
+                        <h4>Innovation Never Stops</h4>
+                        <p>From our upcoming AION AI suite to revolutionary management games, we're constantly pushing boundaries.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mvv-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Drives Us Forward</h2>
+                <p>Our core principles guide every decision, every innovation, and every client relationship we build.</p>
+            </div>
+            <div class="mvv-grid">
+                <div class="mvv-card fade-in">
+                    <div class="mvv-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To empower businesses with innovative technology solutions that drive growth, enhance efficiency, and create sustainable competitive advantages. We exist to transform complex challenges into simple, elegant solutions that propel our clients toward unprecedented success.</p>
+                </div>
+
+                <div class="mvv-card fade-in">
+                    <div class="mvv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To be India's most trusted technology transformation partner, recognized globally for our innovation, integrity, and impact. We envision a future where every business, regardless of size, has access to enterprise-grade technology solutions that fuel their ambitions.</p>
+                </div>
+
+                <div class="mvv-card fade-in">
+                    <div class="mvv-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Our Values</h3>
+                    <p><strong>Excellence:</strong> We deliver nothing short of exceptional quality.<br>
+                    <strong>Innovation:</strong> We continuously push technological boundaries.<br>
+                    <strong>Integrity:</strong> We build relationships on trust and transparency.<br>
+                    <strong>Impact:</strong> We measure success by our clients' achievements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet the Visionaries</h2>
+                <p>Behind every great technology company is an extraordinary team of passionate individuals who turn visions into reality.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4>Rajesh Kumar</h4>
+                        <div class="team-role">Chief Executive Officer</div>
+                        <p class="team-bio">A visionary leader with 25+ years in technology transformation. Rajesh has spearheaded digital initiatives for Fortune 500 companies and is passionate about democratizing enterprise technology for businesses of all sizes.</p>
+                    </div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4>Priya Sharma</h4>
+                        <div class="team-role">Chief Technology Officer</div>
+                        <p class="team-bio">A brilliant technologist and cloud architecture expert. Priya leads our innovation initiatives, including the development of our groundbreaking AION AI suite and next-generation automation platforms.</p>
+                    </div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4>Amit Patel</h4>
+                        <div class="team-role">Head of Cybersecurity</div>
+                        <p class="team-bio">A cybersecurity veteran with expertise in enterprise security architecture. Amit ensures our clients' digital assets remain protected in an increasingly complex threat landscape.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="expertise-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Areas of Expertise</h2>
+                <p>Comprehensive technology capabilities across the entire digital spectrum.</p>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-item fade-in">
+                    <i class="fab fa-aws"></i>
+                    <h4>Cloud Architecture</h4>
+                    <p>AWS, Azure, and GCP certified architects designing scalable, secure cloud infrastructures.</p>
+                </div>
+
+                <div class="expertise-item fade-in">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Cybersecurity</h4>
+                    <p>Advanced threat detection, compliance frameworks, and zero-trust security implementations.</p>
+                </div>
+
+                <div class="expertise-item fade-in">
+                    <i class="fas fa-code-branch"></i>
+                    <h4>DevOps Excellence</h4>
+                    <p>CI/CD pipelines, infrastructure as code, and automated deployment strategies.</p>
+                </div>
+
+                <div class="expertise-item fade-in">
+                    <i class="fas fa-brain"></i>
+                    <h4>AI & Machine Learning</h4>
+                    <p>Custom AI solutions, predictive analytics, and intelligent automation systems.</p>
+                </div>
+
+                <div class="expertise-item fade-in">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>Digital Transformation</h4>
+                    <p>End-to-end modernization strategies that revolutionize business operations.</p>
+                </div>
+
+                <div class="expertise-item fade-in">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Data Analytics</h4>
+                    <p>Business intelligence, data visualization, and actionable insights from complex datasets.</p>
+                </div>
+
+                <div class="expertise-item fade-in">
+                    <i class="fas fa-cogs"></i>
+                    <h4>Process Automation</h4>
+                    <p>RPA implementations, workflow optimization, and intelligent process management.</p>
+                </div>
+
+                <div class="expertise-item fade-in">
+                    <i class="fas fa-headset"></i>
+                    <h4>Managed Services</h4>
+                    <p>Round-the-clock infrastructure management with proactive monitoring and support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="innovation-section">
+        <div class="container">
+            <div class="innovation-content">
+                <div class="section-header">
+                    <h2>🚀 Innovation Lab: Shaping Tomorrow</h2>
+                    <p>We're not just adapting to the future—we're creating it. Our Innovation Lab is developing revolutionary solutions that will redefine how businesses operate.</p>
+                </div>
+
+                <div class="innovation-cards">
+                    <div class="innovation-card fade-in">
+                        <div class="beta-badge games">COMING SOON</div>
+                        <i class="fas fa-gamepad innovation-icon"></i>
+                        <h3>Management Games Revolution</h3>
+                        <p>Interactive business simulation games designed to enhance strategic thinking, leadership capabilities, and decision-making skills. Transform training from mundane to extraordinary with immersive, game-based learning experiences.</p>
+                    </div>
+
+                    <div class="innovation-card fade-in">
+                        <div class="beta-badge ai">COMING SOON</div>
+                        <i class="fas fa-brain innovation-icon"></i>
+                        <h3>AION: The Future of AI</h3>
+                        <p>Our flagship AI software suite featuring autonomous decision-making, predictive business intelligence, and self-optimizing workflows. AION represents the next evolution of business automation—intelligent, adaptive, and revolutionary.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="index.html#contact" style="background: var(--brand-gradient); color: var(--white); padding: 18px 36px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-rocket"></i> Join Our Innovation Journey
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cloudrigade Technologies</h3>
+                    <p>Empowering businesses across India with cutting-edge cloud solutions and digital transformation services. Where cloud meets confidence.</p>
+
+                    <div class="address-box">
+                        <div class="address-header">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" class="india-flag" alt="India Flag" />
+                            India Headquarters:
+                        </div>
+                        <div>
+                            C/O ASHOK, SRIRAMPANDITH 269<br />
+                            ADDIGANAHALLI, Yelahanka Rajanakunte,<br />
+                            Bangalore North - 560064, Karnataka, India
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=13.17294227119414,77.5670985301588" target="_blank" class="map-link">
+                            🚗 <strong>Get Directions</strong>
+                        </a>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/cloudrigade" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com/cloudrigade" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/cloudrigade" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/cloudrigade" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919876543210" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@cloudrigade" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="index.html#services">Cloud Migration & Management</a></li>
+                        <li><a href="index.html#services">Cybersecurity Solutions</a></li>
+                        <li><a href="index.html#services">DevOps & Automation</a></li>
+                        <li><a href="index.html#services">Data Analytics & AI</a></li>
+                        <li><a href="index.html#services">Digital Transformation</a></li>
+                        <li><a href="index.html#services">24/7 IT Support</a></li>
+                        <li><a href="index.html#services">Management Games (Coming Soon)</a></li>
+                        <li><a href="index.html#services">AION Software Suite (Coming Soon)</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+                    <p><strong>Email:</strong> info@cloudrigade.com</p>
+                    <p><strong>Sales:</strong> sales@cloudrigade.com</p>
+                    <p><strong>Support:</strong> support@cloudrigade.com</p>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.8rem; color: #FF1493;">Availability</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.4rem;">Always Available</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.4rem;">Instant Response Guarantee</p>
+                        <p style="font-size: 0.9rem; color: #FF1493; font-weight: 600;">Round-the-Clock Expert Support</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Cloudrigade Technologies Pvt. Ltd. All rights reserved. | CIN: U72900KA2020PTC135678 | Designed with ❤️ in India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const options = {
+                whatsapp: "+919876543210",
+                call_to_action: "Message us",
+                position: "right",
+            };
+            const proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+            const s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            const x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+
+    <script>
+        // Mobile menu toggle with dropdown support
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        const header = document.querySelector('header');
+
+        mobileToggle.addEventListener('click', () => {
+            const isMenuOpen = navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.classList.toggle('fa-bars', !isMenuOpen);
+            icon.classList.toggle('fa-times', isMenuOpen);
+
+            if (isMenuOpen) {
+                const headerHeight = header.offsetHeight;
+                navMenu.style.top = `${headerHeight}px`;
+            }
+        });
+
+        // Mobile dropdown toggle
+        document.querySelectorAll('.nav-item').forEach(item => {
+            const link = item.querySelector('a');
+            const dropdown = item.querySelector('.dropdown-menu');
+
+            if (dropdown) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        if(link.getAttribute('href') === 'index.html#services') {
+                            e.preventDefault();
+                        }
+                        item.classList.toggle('mobile-dropdown-active');
+                    }
+                });
+            }
+        });
+        
+        // Active page link highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            // Since this is a static "About Us" page, we can directly add the 'active' class to its link.
+            const aboutLink = document.querySelector('.nav-menu a[href="#"]');
+             if(aboutLink) {
+                aboutLink.classList.add('active');
+             }
+        });
+
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                // Only prevent default if it's a true anchor link on the same page
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+                
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    const icon = mobileToggle.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            fadeInObserver.observe(el);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
+            } else {
+                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // Counter animation for stats
+        function animateCounters(counter, target, duration) {
+            let start = 0;
+            const increment = target / (duration / 16); 
+
+            const updateCount = () => {
+                start += increment;
+                if (start < target) {
+                    let displayText = Math.ceil(start);
+                    if(counter.dataset.symbol) displayText += counter.dataset.symbol;
+                    if(counter.dataset.plus) displayText += '+';
+                    counter.textContent = displayText;
+                    requestAnimationFrame(updateCount);
+                } else {
+                    let finalText = target;
+                    if(counter.dataset.symbol) finalText += counter.dataset.symbol;
+                    if(counter.dataset.plus) finalText += '+';
+                    counter.textContent = finalText;
+                }
+            };
+            requestAnimationFrame(updateCount);
+        }
+        
+        const statsObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.textContent, 10);
+                        counter.dataset.plus = counter.textContent.includes('+');
+                        counter.dataset.symbol = counter.textContent.includes('%') ? '%' : '';
+                        animateCounters(counter, target, 1500);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-row');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+    </script>
+</body>
+</html>

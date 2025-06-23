@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analytics & AI Solutions - Cloudrigade Technologies</title>
+    <meta name="description" content="Transform your data into actionable insights with machine learning models, business intelligence dashboards, and predictive analytics solutions.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1B2951;
+            --secondary-blue: #2B3E75;
+            --accent-pink: #E91E63;
+            --accent-gradient: linear-gradient(135deg, #E91E63, #FF6B9D);
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-gray: #6C757D;
+            --border-gray: #E9ECEF;
+            --success-green: #28a745;
+            --ai-purple: #6f42c1;
+            --data-blue: #007bff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-blue);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 30px rgba(27, 41, 81, 0.15);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .logo-tagline {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            margin-top: -5px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-pink);
+        }
+
+        .cta-button {
+            background: var(--accent-gradient);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 30, 99, 0.4);
+        }
+
+        /* Service Hero Section */
+        .service-hero {
+            background: linear-gradient(135deg, 
+                rgba(27, 41, 81, 0.95) 0%, 
+                rgba(43, 62, 117, 0.95) 50%, 
+                rgba(233, 30, 99, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 140px 0 100px;
+            position: relative;
+        }
+
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.5);
+        }
+
+        .data-visualization {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .data-flow {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .data-step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .data-step:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .data-step i {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .data-step h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .data-step p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.3;
+        }
+
+        .data-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        /* Data Solutions Section */
+        .data-solutions {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .solution-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            min-height: 420px;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+
+        .solution-card.analytics::before {
+            background: linear-gradient(135deg, var(--data-blue), #66b3ff);
+        }
+
+        .solution-card.ai::before {
+            background: linear-gradient(135deg, var(--ai-purple), #9966cc);
+        }
+
+        .solution-card.bi::before {
+            background: var(--accent-gradient);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .solution-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-card.analytics .solution-icon {
+            background: linear-gradient(135deg, var(--data-blue), #66b3ff);
+        }
+
+        .solution-card.ai .solution-icon {
+            background: linear-gradient(135deg, var(--ai-purple), #9966cc);
+        }
+
+        .solution-card.bi .solution-icon {
+            background: var(--accent-gradient);
+        }
+
+        .solution-icon i {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .solution-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .solution-card p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .solution-features {
+            list-style: none;
+            margin-top: auto;
+        }
+
+        .solution-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .solution-features i {
+            color: var(--success-green);
+            font-size: 1rem;
+        }
+
+        /* AI Use Cases Section */
+        .use-cases-section {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .use-case-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--ai-purple);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            min-height: 220px;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .use-case-card i {
+            font-size: 2.5rem;
+            color: var(--ai-purple);
+            margin-bottom: 1rem;
+        }
+
+        .use-case-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .use-case-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex: 1;
+            margin-top: auto;
+        }
+
+        /* Technology Stack */
+        .tech-stack-section {
+            padding: 100px 0;
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .tech-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tech-category {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            min-height: 220px;
+        }
+
+        .tech-category h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-logos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .tech-logo {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.2rem;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            height: 90px;
+        }
+
+        .tech-logo:hover {
+            background: var(--accent-gradient);
+            transform: scale(1.05);
+        }
+
+        .tech-logo i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-logo span {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid var(--border-gray);
+            border-radius: 25px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 500px;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-pink);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-gradient);
+            color: var(--white);
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-period {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+            flex: 1;
+        }
+
+        .plan-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-card .btn-primary {
+            margin-top: auto;
+            align-self: center;
+            width: 100%;
+            text-align: center;
+        }
+
+        .feature-check {
+            color: var(--success-green);
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--light-gray);
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-pink);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .data-flow {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .data-step {
+                height: 140px;
+                padding: 1.5rem;
+            }
+
+            .data-step i {
+                font-size: 2rem;
+            }
+
+            .data-step h4 {
+                font-size: 1rem;
+            }
+
+            .data-step p {
+                font-size: 0.85rem;
+            }
+
+            .data-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .stat-item {
+                height: 120px;
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-card {
+                min-height: 350px;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .use-case-card {
+                min-height: 180px;
+            }
+
+            .tech-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-category {
+                min-height: 200px;
+            }
+
+            .tech-logos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card {
+                min-height: 450px;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-card {
+                padding: 2rem;
+                min-height: 320px;
+            }
+
+            .data-flow {
+                gap: 1rem;
+            }
+
+            .data-step {
+                padding: 1.5rem 1rem;
+                height: 120px;
+            }
+
+            .data-step i {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .data-step h4 {
+                font-size: 0.95rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .data-step p {
+                font-size: 0.8rem;
+            }
+
+            .data-stats {
+                gap: 1rem;
+            }
+
+            .stat-item {
+                padding: 1.5rem 1rem;
+                height: 100px;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .stat-label {
+                font-size: 0.85rem;
+            }
+
+            .use-case-card {
+                padding: 2rem;
+                min-height: 160px;
+            }
+
+            .tech-category {
+                padding: 2rem;
+                min-height: 180px;
+            }
+
+            .pricing-card {
+                padding: 2rem;
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="nav-container">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#E91E63;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FF6B9D;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M75 35c8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15H25c-8.284 0-15-6.716-15-15s6.716-15 15-15c0-11.046 8.954-20 20-20s20 8.954 20 20c5.523 0 10 4.477 10 10z" fill="url(#cloudGradient)" opacity="0.9"/>
+                            <path d="M45 25c-8.284 0-15 6.716-15 15 0 2.5.5 4.9 1.4 7.1C33.6 45.6 35.7 44 38.2 44h31.6c6.6 0 12-5.4 12-12s-5.4-12-12-12c-1.3 0-2.5.2-3.7.6C63.2 15.2 56.8 10 49 10c-7.8 0-14.2 5.2-17.1 12.4C30.6 23.2 29.4 24 28 24c-3.3 0-6 2.7-6 6s2.7 6 6 6h11c2.8-7.2 9.8-12 18-12z" fill="rgba(255,255,255,0.3)"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <a href="index.html" class="logo-text">CLOUDRIGADE</a>
+                        <div class="logo-tagline">WHERE CLOUD MEETS CONFIDENCE</div>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html#contact" class="cta-button">Get Free Assessment</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Service Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Data Analytics & AI Solutions</h1>
+                    <p>Transform your data into actionable insights with machine learning models, business intelligence dashboards, and predictive analytics that drive informed decision-making.</p>
+                    <a href="#contact" class="btn-primary">Start Data Transformation</a>
+                </div>
+                <div class="data-visualization">
+                    <div class="data-flow">
+                        <div class="data-step">
+                            <i class="fas fa-database"></i>
+                            <h4>Collect Data</h4>
+                            <p>Multiple Sources</p>
+                        </div>
+                        <div class="data-step">
+                            <i class="fas fa-cogs"></i>
+                            <h4>Process & Analyze</h4>
+                            <p>AI/ML Models</p>
+                        </div>
+                        <div class="data-step">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Generate Insights</h4>
+                            <p>Actionable Results</p>
+                        </div>
+                    </div>
+                    <div class="data-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10x</div>
+                            <div class="stat-label">Faster Insights</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Prediction Accuracy</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50%</div>
+                            <div class="stat-label">Cost Reduction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Solutions Section -->
+    <section class="data-solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Data & AI Solutions</h2>
+                <p>End-to-end data analytics and artificial intelligence services to unlock your business potential</p>
+            </div>
+            <div class="solutions-grid">
+                <div class="solution-card analytics">
+                    <div class="solution-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Deep dive into your data with statistical analysis, data mining, and advanced visualization techniques.</p>
+                    <ul class="solution-features">
+                        <li><i class="fas fa-check"></i> Statistical Modeling & Analysis</li>
+                        <li><i class="fas fa-check"></i> Data Mining & Pattern Recognition</li>
+                        <li><i class="fas fa-check"></i> Predictive Analytics</li>
+                        <li><i class="fas fa-check"></i> Real-time Data Processing</li>
+                    </ul>
+                </div>
+                <div class="solution-card ai">
+                    <div class="solution-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Machine Learning & AI</h3>
+                    <p>Custom AI models and machine learning solutions to automate processes and predict outcomes.</p>
+                    <ul class="solution-features">
+                        <li><i class="fas fa-check"></i> Custom ML Model Development</li>
+                        <li><i class="fas fa-check"></i> Natural Language Processing</li>
+                        <li><i class="fas fa-check"></i> Computer Vision & Image Recognition</li>
+                        <li><i class="fas fa-check"></i> Automated Decision Systems</li>
+                    </ul>
+                </div>
+                <div class="solution-card bi">
+                    <div class="solution-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Business Intelligence</h3>
+                    <p>Interactive dashboards and reporting solutions that provide real-time business insights.</p>
+                    <ul class="solution-features">
+                        <li><i class="fas fa-check"></i> Interactive Dashboards</li>
+                        <li><i class="fas fa-check"></i> Automated Reporting</li>
+                        <li><i class="fas fa-check"></i> KPI Monitoring & Alerts</li>
+                        <li><i class="fas fa-check"></i> Self-Service Analytics</li>
+                    </ul>
+                </div>
+                <div class="solution-card analytics">
+                    <div class="solution-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h3>Data Engineering</h3>
+                    <p>Build robust data pipelines and infrastructure to handle large-scale data processing and storage.</p>
+                    <ul class="solution-features">
+                        <li><i class="fas fa-check"></i> Data Pipeline Development</li>
+                        <li><i class="fas fa-check"></i> ETL/ELT Process Automation</li>
+                        <li><i class="fas fa-check"></i> Data Warehouse Design</li>
+                        <li><i class="fas fa-check"></i> Big Data Processing</li>
+                    </ul>
+                </div>
+                <div class="solution-card ai">
+                    <div class="solution-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Process Automation</h3>
+                    <p>Intelligent automation solutions using RPA and AI to streamline business processes.</p>
+                    <ul class="solution-features">
+                        <li><i class="fas fa-check"></i> Robotic Process Automation (RPA)</li>
+                        <li><i class="fas fa-check"></i> Intelligent Document Processing</li>
+                        <li><i class="fas fa-check"></i> Workflow Optimization</li>
+                        <li><i class="fas fa-check"></i> Process Mining & Analysis</li>
+                    </ul>
+                </div>
+                <div class="solution-card bi">
+                    <div class="solution-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Data Governance</h3>
+                    <p>Ensure data quality, security, and compliance with comprehensive data governance frameworks.</p>
+                    <ul class="solution-features">
+                        <li><i class="fas fa-check"></i> Data Quality Management</li>
+                        <li><i class="fas fa-check"></i> Privacy & Compliance (GDPR, PDPB)</li>
+                        <li><i class="fas fa-check"></i> Data Catalog & Lineage</li>
+                        <li><i class="fas fa-check"></i> Access Control & Security</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Use Cases Section -->
+    <section class="use-cases-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>AI Use Cases Across Industries</h2>
+                <p>Discover how artificial intelligence transforms business operations across different sectors</p>
+            </div>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h4>E-commerce</h4>
+                    <p>Personalized recommendations, price optimization, and demand forecasting to boost sales and customer satisfaction.</p>
+                </div>
+                <div class="use-case-card">
+                    <i class="fas fa-industry"></i>
+                    <h4>Manufacturing</h4>
+                    <p>Predictive maintenance, quality control, and supply chain optimization to reduce costs and improve efficiency.</p>
+                </div>
+                <div class="use-case-card">
+                    <i class="fas fa-user-md"></i>
+                    <h4>Healthcare</h4>
+                    <p>Medical image analysis, patient risk assessment, and treatment recommendation systems for better outcomes.</p>
+                </div>
+                <div class="use-case-card">
+                    <i class="fas fa-university"></i>
+                    <h4>Banking & Finance</h4>
+                    <p>Fraud detection, credit scoring, algorithmic trading, and regulatory compliance automation.</p>
+                </div>
+                <div class="use-case-card">
+                    <i class="fas fa-truck"></i>
+                    <h4>Logistics</h4>
+                    <p>Route optimization, demand planning, warehouse automation, and delivery time prediction.</p>
+                </div>
+                <div class="use-case-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Human Resources</h4>
+                    <p>Resume screening, employee sentiment analysis, performance prediction, and talent acquisition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="tech-stack-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Technology Stack</h2>
+                <p>Cutting-edge tools and platforms for comprehensive data analytics and AI solutions</p>
+            </div>
+            <div class="tech-categories">
+                <div class="tech-category">
+                    <h4>Data Processing</h4>
+                    <div class="tech-logos">
+                        <div class="tech-logo">
+                            <i class="fas fa-database"></i>
+                            <span>Apache Spark</span>
+                        </div>
+                        <div class="tech-logo">
+                            <i class="fas fa-stream"></i>
+                            <span>Kafka</span>
+                        </div>
+                        <div class="tech-logo">
+                            <i class="fas fa-cloud"></i>
+                            <span>Airflow</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Machine Learning</h4>
+                    <div class="tech-logos">
+                        <div class="tech-logo">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-logo">
+                            <i class="fas fa-brain"></i>
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="tech-logo">
+                            <i class="fas fa-fire"></i>
+                            <span>PyTorch</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Visualization</h4>
+                    <div class="tech-logos">
+                        <div class="tech-logo">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Tableau</span>
+                        </div>
+                        <div class="tech-logo">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Power BI</span>
+                        </div>
+                        <div class="tech-logo">
+                            <i class="fas fa-chart-line"></i>
+                            <span>D3.js</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Cloud Platforms</h4>
+                    <div class="tech-logos">
+                        <div class="tech-logo">
+                            <i class="fab fa-aws"></i>
+                            <span>AWS</span>
+                        </div>
+                        <div class="tech-logo">
+                            <i class="fab fa-microsoft"></i>
+                            <span>Azure</span>
+                        </div>
+                        <div class="tech-logo">
+                            <i class="fab fa-google"></i>
+                            <span>GCP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Data Analytics & AI Packages</h2>
+                <p>Choose the data solution package that transforms your business intelligence and decision-making</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-name">Analytics Starter</div>
+                    <div class="plan-price">₹55,000</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li>Basic BI Dashboards <span class="feature-check">✓</span></li>
+                        <li>Data Visualization Tools <span class="feature-check">✓</span></li>
+                        <li>Standard Reports <span class="feature-check">✓</span></li>
+                        <li>Data Quality Assessment <span class="feature-check">✓</span></li>
+                        <li>Up to 5 Data Sources <span class="feature-check">✓</span></li>
+                        <li>Email Support <span class="feature-check">✓</span></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="plan-name">AI-Powered Analytics</div>
+                    <div class="plan-price">₹1,25,000</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li>Advanced Analytics & ML Models <span class="feature-check">✓</span></li>
+                        <li>Predictive Analytics <span class="feature-check">✓</span></li>
+                        <li>Real-time Data Processing <span class="feature-check">✓</span></li>
+                        <li>Custom AI Model Development <span class="feature-check">✓</span></li>
+                        <li>Automated Reporting <span class="feature-check">✓</span></li>
+                        <li>Data Pipeline Management <span class="feature-check">✓</span></li>
+                        <li>Unlimited Data Sources <span class="feature-check">✓</span></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="plan-name">Enterprise AI Suite</div>
+                    <div class="plan-price">₹3,50,000</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li>Complete AI Transformation <span class="feature-check">✓</span></li>
+                        <li>Deep Learning & Neural Networks <span class="feature-check">✓</span></li>
+                        <li>Computer Vision & NLP <span class="feature-check">✓</span></li>
+                        <li>Process Automation (RPA) <span class="feature-check">✓</span></li>
+                        <li>Dedicated Data Science Team <span class="feature-check">✓</span></li>
+                        <li>24/7 Support & Monitoring <span class="feature-check">✓</span></li>
+                        <li>Custom Enterprise Solutions <span class="feature-check">✓</span></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-primary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Unlock Your Data's Potential?</h2>
+                <p>Transform your business with AI-powered analytics and machine learning solutions that drive real results.</p>
+                <a href="index.html#contact" class="btn-primary">Start Data Assessment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cloudrigade Technologies</h3>
+                    <p>Empowering businesses across India with cutting-edge cloud solutions and digital transformation services.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="cloud-migration.html">Cloud Migration</a></li>
+                        <li><a href="cybersecurity.html">Cybersecurity</a></li>
+                        <li><a href="devops.html">DevOps & Automation</a></li>
+                        <li><a href="data-analytics.html">Data Analytics</a></li>
+                        <li><a href="digital-transformation.html">Digital Transformation</a></li>
+                        <li><a href="it-support.html">24/7 Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Phone: +91 80-4567-8901</li>
+                        <li>Email: info@cloudrigade.tech</li>
+                        <li>Address: Brigade Road, Bangalore</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cloudrigade Technologies Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(27, 41, 81, 0.2)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 30px rgba(27, 41, 81, 0.15)';
+            }
+        });
+
+        // Animate data flow on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.data-step, .use-case-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudrigade Technologies - Transform Your Business with Expert IT Solutions</title>
+    <meta name="description" content="Cloudrigade Technologies delivers comprehensive IT services that drive growth, enhance security, and reduce costs for businesses across India.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1B2951;
+            --secondary-blue: #2B3E75;
+            --accent-pink: #E91E63;
+            --bright-pink: #FF1493;
+            --dark-blue: #0A1628;
+            --brand-gradient: linear-gradient(135deg, #FF1493, #0A1628);
+            --accent-gradient: linear-gradient(135deg, #FF1493, #E91E63);
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-gray: #6C757D;
+            --border-gray: #E9ECEF;
+            --cloud-pink: #FF1744;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-blue);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 30px rgba(27, 41, 81, 0.15);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo-tagline {
+            font-family: 'Abel', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-top: -5px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--bright-pink);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #FF69B4, #87CEEB);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Abel', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.4);
+            background: linear-gradient(135deg, #FF1493, #4682B4);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, 
+                rgba(27, 41, 81, 0.95) 0%, 
+                rgba(43, 62, 117, 0.95) 50%, 
+                rgba(233, 30, 99, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .hero-text p {
+            font-family: 'Abel', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--brand-gradient);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Abel', sans-serif;
+            font-weight: 400;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+            padding: 16px 32px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Abel', sans-serif;
+            font-weight: 400;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--dark-blue);
+            border-color: var(--white);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tech-icons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .tech-icon {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .tech-icon i {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tech-icon h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Value Proposition Section */
+        .value-prop {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+            letter-spacing: 1px;
+        }
+
+        .section-header p {
+            font-family: 'Abel', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--brand-gradient);
+        }
+
+        .value-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .value-card i {
+            font-size: 3rem;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+            letter-spacing: 0.5px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-pink);
+            box-shadow: 0 15px 40px rgba(233, 30, 99, 0.15);
+            transform: translateY(-8px);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--brand-gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+            letter-spacing: 0.5px;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .service-link {
+            color: var(--bright-pink);
+            text-decoration: none;
+            font-family: 'Abel', sans-serif;
+            font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-link:hover {
+            transform: translateX(8px);
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-us {
+            padding: 100px 0;
+            background: var(--primary-blue);
+            color: var(--white);
+            position: relative;
+        }
+
+        .why-choose-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .why-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .why-text h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .why-features {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon i {
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .feature-text h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-text p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent-pink);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--brand-gradient);
+            color: var(--white);
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-family: 'Abel', sans-serif;
+            font-weight: 400;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .plan-price {
+            font-size: 2.8rem;
+            font-weight: 400;
+            font-family: 'Bebas Neue', sans-serif;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-period {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-check {
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Abel', sans-serif;
+            font-weight: 400;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item i {
+            font-size: 1.3rem;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            width: 25px;
+        }
+
+        .contact-form {
+            background: var(--light-gray);
+            padding: 2.5rem;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'Abel', sans-serif;
+            font-weight: 400;
+            color: var(--primary-blue);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border-gray);
+            border-radius: 10px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--bright-pink);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--brand-gradient);
+            color: var(--white);
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Abel', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--bright-pink);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--brand-gradient);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem 0;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .tech-icons {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: 2rem;
+            }
+
+            .why-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.popular {
+                transform: none;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.9rem;
+            }
+
+            .tech-icons {
+                grid-template-columns: 1fr;
+            }
+
+            .value-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="nav-container">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <!-- Replace this with your logo image -->
+                        <img src="/Website/logo-color.png" alt="Cloudrigade Technologies Logo">
+                        <!-- If you don't have a logo yet, you can use this SVG placeholder -->
+                        <!-- <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF1493;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#0A1628;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M75 35c8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15H25c-8.284 0-15-6.716-15-15s6.716-15 15-15c0-11.046 8.954-20 20-20s20 8.954 20 20c5.523 0 10 4.477 10 10z" fill="url(#cloudGradient)" opacity="0.9"/>
+                            <path d="M45 25c-8.284 0-15 6.716-15 15 0 2.5.5 4.9 1.4 7.1C33.6 45.6 35.7 44 38.2 44h31.6c6.6 0 12-5.4 12-12s-5.4-12-12-12c-1.3 0-2.5.2-3.7.6C63.2 15.2 56.8 10 49 10c-7.8 0-14.2 5.2-17.1 12.4C30.6 23.2 29.4 24 28 24c-3.3 0-6 2.7-6 6s2.7 6 6 6h11c2.8-7.2 9.8-12 18-12z" fill="rgba(255,255,255,0.3)"/>
+                        </svg> -->
+                    </div>
+                    <div>
+                        <div class="logo-text">CLOUDRIGADE</div>
+                        <div class="logo-tagline">WHERE CLOUD MEETS CONFIDENCE</div>
+                    </div>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#contact" class="cta-button">Get Free Assessment</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Transform Your Business with Cloud Excellence</h1>
+                    <p>Cloudrigade Technologies empowers businesses across India with cutting-edge cloud solutions, enterprise IT services, and digital transformation strategies that drive growth and innovation.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Start Your Journey</a>
+                        <a href="#services" class="btn-secondary">Explore Services</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="tech-icons">
+                        <div class="tech-icon">
+                            <i class="fab fa-aws"></i>
+                            <h4>AWS</h4>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-microsoft"></i>
+                            <h4>Azure</h4>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-google"></i>
+                            <h4>Google Cloud</h4>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Security</h4>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-cogs"></i>
+                            <h4>DevOps</h4>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Analytics</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section class="value-prop" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Businesses Choose Cloudrigade</h2>
+                <p>We deliver measurable results through expert cloud solutions, innovative technology, and unwavering commitment to your success.</p>
+            </div>
+            <div class="value-grid">
+                <div class="value-card fade-in">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Accelerated Growth</h3>
+                    <p>Our cloud solutions reduce infrastructure costs by up to 40% while increasing operational efficiency and scalability for your business.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Enterprise Security</h3>
+                    <p>Multi-layered security protocols and compliance frameworks protect your data with bank-grade encryption and 24/7 monitoring.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <i class="fas fa-users"></i>
+                    <h3>Expert Support</h3>
+                    <p>Dedicated team of certified cloud architects and engineers providing round-the-clock support with guaranteed response times.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive IT Solutions</h2>
+                <p>From cloud migration to digital transformation, we provide end-to-end technology services tailored to your business needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Migration & Management</h3>
+                    <p>Seamlessly migrate your infrastructure to AWS, Azure, or Google Cloud with zero downtime. Our experts handle everything from planning to optimization.</p>
+                    <a href="/Website/cloud.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity Solutions</h3>
+                    <p>Protect your business with advanced threat detection, vulnerability assessments, and compliance management tailored to Indian regulations.</p>
+                    <a href="/Website/cybersecurity.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>DevOps & Automation</h3>
+                    <p>Streamline your development pipeline with CI/CD implementation, infrastructure as code, and automated testing frameworks.</p>
+                    <a href="/Website/DevOps.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Analytics & AI</h3>
+                    <p>Transform your data into actionable insights with machine learning models, business intelligence dashboards, and predictive analytics.</p>
+                    <a href="/Website/Data.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Digital Transformation</h3>
+                    <p>Modernize your business processes with custom applications, API integrations, and cloud-native solutions designed for scale.</p>
+                    <a href="/Website/Digital.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 IT Support</h3>
+                    <p>Round-the-clock technical support with guaranteed response times, proactive monitoring, and dedicated account management.</p>
+                    <a href="/Website/IT.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <div class="container">
+            <div class="why-content">
+                <div class="why-text">
+                    <h2>Why Leading Companies Trust Cloudrigade</h2>
+                    <p>With over 500+ successful deployments across India, we've earned the trust of startups to Fortune 500 companies through our proven methodology and exceptional results.</p>
+                </div>
+                <div class="why-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Certified Experts</h4>
+                            <p>Team of 50+ certified cloud architects and engineers with deep expertise across all major platforms.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>99.9% Uptime Guarantee</h4>
+                            <p>Industry-leading SLA with proactive monitoring and rapid incident response protocols.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Cost Optimization</h4>
+                            <p>Average 35% reduction in IT costs through intelligent automation and resource optimization.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Made in India</h4>
+                            <p>Local expertise with global standards, ensuring compliance with Indian data protection regulations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transparent Pricing Plans</h2>
+                <p>Choose the perfect plan for your business size and requirements. All plans include our core security features and 24/7 support.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <div class="plan-name">Startup</div>
+                    <div class="plan-price">₹25,000</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li>Cloud Migration Assessment <span class="feature-check">✓</span></li>
+                        <li>Basic Security Setup <span class="feature-check">✓</span></li>
+                        <li>Email Support <span class="feature-check">✓</span></li>
+                        <li>Monthly Health Reports <span class="feature-check">✓</span></li>
+                        <li>Up to 5 Users <span class="feature-check">✓</span></li>
+                    </ul>
+                    <a href="#contact" class="btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card popular fade-in">
+                    <div class="plan-name">Growth</div>
+                    <div class="plan-price">₹75,000</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li>Complete Cloud Migration <span class="feature-check">✓</span></li>
+                        <li>Advanced Security Suite <span class="feature-check">✓</span></li>
+                        <li>24/7 Phone & Chat Support <span class="feature-check">✓</span></li>
+                        <li>Weekly Performance Reports <span class="feature-check">✓</span></li>
+                        <li>DevOps Pipeline Setup <span class="feature-check">✓</span></li>
+                        <li>Up to 50 Users <span class="feature-check">✓</span></li>
+                    </ul>
+                    <a href="#contact" class="btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <div class="plan-name">Enterprise</div>
+                    <div class="plan-price">Custom</div>
+                    <div class="plan-period">tailored pricing</div>
+                    <ul class="plan-features">
+                        <li>Full Digital Transformation <span class="feature-check">✓</span></li>
+                        <li>Enterprise Security & Compliance <span class="feature-check">✓</span></li>
+                        <li>Dedicated Account Manager <span class="feature-check">✓</span></li>
+                        <li>Real-time Monitoring Dashboard <span class="feature-check">✓</span></li>
+                        <li>Custom Integrations <span class="feature-check">✓</span></li>
+                        <li>Unlimited Users <span class="feature-check">✓</span></li>
+                    </ul>
+                    <a href="#contact" class="btn-primary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ready to Transform Your Business?</h2>
+                <p>Get in touch with our experts for a free consultation and discover how Cloudrigade can accelerate your digital transformation journey.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong><br>
+                            +91 80-4567-8901<br>
+                            +91 80-4567-8902
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            info@cloudrigade.tech<br>
+                            sales@cloudrigade.tech
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong><br>
+                            Cloudrigade Technologies Pvt Ltd<br>
+                            #123, Brigade Road<br>
+                            Bangalore, Karnataka 560001<br>
+                            India
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Business Hours</strong><br>
+                            Monday - Friday: 9:00 AM - 7:00 PM<br>
+                            Saturday: 10:00 AM - 4:00 PM<br>
+                            24/7 Emergency Support Available
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interest</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="cloud-migration">Cloud Migration</option>
+                                <option value="cybersecurity">Cybersecurity</option>
+                                <option value="devops">DevOps & Automation</option>
+                                <option value="data-analytics">Data Analytics & AI</option>
+                                <option value="digital-transformation">Digital Transformation</option>
+                                <option value="support">24/7 IT Support</option>
+                                <option value="consultation">Free Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your project requirements..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer -->
+    <footer>
+        <style>
+            /* Enhanced Footer Styles */
+            footer .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            
+            .footer-content {
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr 1.2fr;
+                gap: 3rem;
+                margin-bottom: 2rem;
+                align-items: flex-start;
+            }
+            
+            .footer-section {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .footer-section h3 {
+                font-family: 'Bebas Neue', sans-serif;
+                font-weight: 400;
+                margin-bottom: 1.5rem;
+                letter-spacing: 0.5px;
+                color: #FFFFFF;
+                font-size: 1.4rem;
+            }
+            
+            .footer-section ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .footer-section ul li {
+                margin-bottom: 0.8rem;
+                line-height: 1.4;
+            }
+            
+            .footer-section ul li a {
+                color: rgba(255, 255, 255, 0.8);
+                text-decoration: none;
+                transition: color 0.3s ease;
+                font-size: 0.95rem;
+            }
+            
+            .footer-section ul li a:hover {
+                color: #FF1493;
+            }
+            
+            .footer-section p {
+                margin-bottom: 0.8rem;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 0.95rem;
+            }
+            
+            .social-links {
+                display: flex;
+                gap: 0.8rem;
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+            }
+            
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.15) !important;
+                border: 1px solid rgba(255, 255, 255, 0.3) !important;
+                color: #FFFFFF !important;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                text-decoration: none;
+            }
+            
+            .social-links a:hover {
+                background: var(--brand-gradient) !important;
+                border-color: #FF1493 !important;
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+            }
+            
+            .footer-bottom {
+                text-align: center;
+                padding-top: 2rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                opacity: 0.8;
+            }
+            
+            .footer-bottom p {
+                margin: 0;
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            
+            @media (max-width: 768px) {
+                .footer-content {
+                    grid-template-columns: 1fr !important;
+                    gap: 2rem;
+                }
+                
+                .footer-section {
+                    text-align: center;
+                }
+                
+                .social-links {
+                    justify-content: center;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                footer .container {
+                    padding: 0 15px;
+                }
+                
+                .footer-content {
+                    gap: 1.5rem;
+                }
+            }
+        </style>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cloudrigade Technologies</h3>
+                    <p>Empowering businesses across India with cutting-edge cloud solutions and digital transformation services. Where cloud meets confidence.</p>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 15px 20px; border-radius: 12px; margin: 20px 0;">
+                        <div style="font-weight: 600; display: flex; align-items: center; gap: 6px; color: #FF1493; margin-bottom: 10px; font-size: 0.95rem;">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" 
+                                 style="width: 20px; height: 14px; margin-right: 8px; border-radius: 2px; box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);" 
+                                 alt="India Flag" />
+                            India Branch:
+                        </div>
+                        <div style="margin-bottom: 15px; line-height: 1.4; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9);">
+                            C/O ASHOK, SRIRAMPANDITH 269<br />
+                            ADDIGANAHALLI, Yelahanka Rajanakunte,<br />
+                            Bangalore North - 560064, Karnataka India
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=13.17294227119414,77.5670985301588" 
+                           target="_blank" 
+                           style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #FF1493, #0A1628); color: #FFFFFF; font-weight: 600; padding: 8px 16px; border-radius: 25px; transition: 0.3s ease; text-decoration: none; box-shadow: 0 3px 6px rgba(255, 20, 147, 0.4); font-size: 0.85rem;">
+                            🚗 <strong>Get Directions</strong>
+                        </a>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/cloudrigade" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com/cloudrigade" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/cloudrigade" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://cloudrigade.hi.link" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919876543210" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@cloudrigade" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Cloud Migration</a></li>
+                        <li><a href="#services">Cybersecurity</a></li>
+                        <li><a href="#services">DevOps & Automation</a></li>
+                        <li><a href="#services">Data Analytics</a></li>
+                        <li><a href="#services">Digital Transformation</a></li>
+                        <li><a href="#services">24/7 Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#case-studies">Case Studies</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#partners">Partners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Phone: +91 80-4567-8901</p>
+                    <p>Email: info@cloudrigade.tech</p>
+                    <p>Address: Brigade Road, Bangalore</p>
+                    <div style="margin-top: 1rem;">
+                        <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: #FF1493;">Business Hours</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.3rem;">Monday - Friday: 9:00 AM - 7:00 PM</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.3rem;">Saturday: 10:00 AM - 4:00 PM</p>
+                        <p style="font-size: 0.9rem; color: #FF1493;">24/7 Emergency Support Available</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cloudrigade Technologies Pvt Ltd. All rights reserved. | CIN: U72900KA2020PTC135678</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Chat Widget -->
+    <script>
+      (function () {
+        const options = {
+          whatsapp: "+919876543210",
+          call_to_action: "Message us",
+          position: "right",
+        };
+        const proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+        const s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        const x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+      })();
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                    const icon = mobileToggle.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(27, 41, 81, 0.2)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 30px rgba(27, 41, 81, 0.15)';
+            }
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.name || !data.email || !data.phone || !data.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Phone validation (basic)
+            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+            if (!phoneRegex.test(data.phone)) {
+                alert('Please enter a valid phone number.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! Our team will get back to you within 24 hours.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Pricing card hover effects
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (!card.classList.contains('popular')) {
+                    card.style.transform = 'translateY(-15px) scale(1.02)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                if (!card.classList.contains('popular')) {
+                    card.style.transform = 'translateY(-15px)';
+                }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
